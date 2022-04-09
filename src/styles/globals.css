@@ -1,0 +1,38 @@
+@tailwind base;
+html {
+  @apply bg-gray-200;
+  @apply text-black;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -0.025em;
+}
+strong {
+  font-weight: 800;
+}
+h1 {
+  @apply text-5xl;
+  font-weight: normal;
+  letter-spacing: -0.04em;
+  line-height: 1.1 !important;
+  margin-bottom: 0.5em;
+}
+h2 {
+  @apply text-4xl;
+  letter-spacing: -0.05em;
+}
+h3 {
+  @apply text-3xl;
+  letter-spacing: -0.05em;
+}
+a {
+  @apply text-red;
+}
+img,
+svg {
+  @apply max-w-full;
+}
+p {
+  @apply pb-4;
+}
+
+@tailwind components;
+@tailwind utilities;
