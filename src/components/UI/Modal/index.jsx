@@ -15,6 +15,8 @@ const ModalContainer = styled(motion.div)`
   right: 0;
   bottom: 0;
   z-index: 100;
+  width: 100%;
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 `
@@ -23,6 +25,7 @@ const Modal = styled(motion.div)`
   background-color: white;
   box-shadow: -0.5em 0 0.5em 0 rgba(0, 0, 0, 0.2);
   max-width: 1020px;
+  min-height: 50%;
   @media (max-width: 1020px) {
     max-width: 96%;
   }

@@ -15,6 +15,8 @@ import { useTheme } from '@/contexts/Theming'
 
 import IntroSvg from './Intro'
 
+import { useModal } from '@/contexts/Modal'
+
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
@@ -69,12 +71,17 @@ const RadialGradient = styled(motion.div)`
 const ContentWrapper = styled.div`
   min-width: 700px;
   margin-top: 200px;
+  position: relative;
+  z-index: 4;
+  border: 1px solid tomato;
+  button {
+    border: 3px solid #0f0;
+  }
   @media (max-width: 700px) {
     min-width: 90%;
     margin-left: auto;
     margin-right: auto;
   }
-  display: inline-block;
   svg {
     width: 100%;
     height: auto;
@@ -89,7 +96,8 @@ const VectorWrap = styled(motion.div)`
   right: 0;
   bottom: 0;
   top: 0;
-  z-index: 3;
+  z-index: 1;
+  pointer-events: none;
 `
 
 const ZepedaSvg = styled(motion.div)`
@@ -186,6 +194,8 @@ const Intro = () => {
 
   const height = 3 // 3 paños
 
+  const { setContentKey, setActive } = useModal()
+
   return (
     <>
       <AnimatePresence>
@@ -199,15 +209,6 @@ const Intro = () => {
             y: gradientProgressY,
           }}
         />
-        <VectorWrap key="vector-wrap">
-          <ZepedaSvg
-            ref={zepedaRef}
-            style={{
-              opacity: fallingZepedaOpacity,
-            }}>
-            <IntroSvg />
-          </ZepedaSvg>
-        </VectorWrap>
         <Container
           key="container"
           ref={containerRef}
@@ -221,11 +222,21 @@ const Intro = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, ease: false }}>
               <ContentWrapper>
-                <h1>hola</h1>{' '}
+                <h1>hola</h1>
+                <button onClick={() => setActive(true)}>modal</button>
               </ContentWrapper>
             </Content>
           </Screen>
         </Container>
+        <VectorWrap key="vector-wrap">
+          <ZepedaSvg
+            ref={zepedaRef}
+            style={{
+              opacity: fallingZepedaOpacity,
+            }}>
+            <IntroSvg />
+          </ZepedaSvg>
+        </VectorWrap>
       </AnimatePresence>
     </>
   )
