@@ -73,10 +73,7 @@ const ContentWrapper = styled.div`
   margin-top: 200px;
   position: relative;
   z-index: 4;
-  border: 1px solid tomato;
-  button {
-    border: 3px solid #0f0;
-  }
+
   @media (max-width: 700px) {
     min-width: 90%;
     margin-left: auto;
@@ -118,7 +115,7 @@ const ZepedaSvg = styled(motion.div)`
   }
 `
 
-const Intro = () => {
+const Intro = ({ title, description }) => {
   const area = useGetResizer()
   const containerRef = useRef()
   const zepedaRef = useRef()
@@ -195,7 +192,9 @@ const Intro = () => {
   const height = 3 // 3 paños
 
   const { setContentKey, setActive } = useModal()
-
+  const replaceLineWithBr = text => {
+    return text.replace(/\n/g, '<br />')
+  }
   return (
     <>
       <AnimatePresence>
@@ -222,8 +221,14 @@ const Intro = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, ease: false }}>
               <ContentWrapper>
-                <h1>hola</h1>
-                <button onClick={() => setActive(true)}>modal</button>
+                <h1
+                  dangerouslySetInnerHTML={{
+                    __html: replaceLineWithBr(title),
+                  }}></h1>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: replaceLineWithBr(description),
+                  }}></div>
               </ContentWrapper>
             </Content>
           </Screen>

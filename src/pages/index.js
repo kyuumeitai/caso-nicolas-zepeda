@@ -6,11 +6,12 @@ import Recuadro from '@/components/Featured/NicolasZepeda/Recuadro'
 import content from '@/content/'
 
 const IndexPage = () => {
+  const { title, description, chapters } = content
   return (
     <Layout>
-      <SEO title={` - Interactivo La Tercera`} />
-      <Intro title={'hola'} />
-      <Recuadro />
+      <SEO title={`${title} - Interactivo La Tercera`} />
+      <Intro title={title} description={description} />
+      <Recuadro chapters={chapters} />
     </Layout>
   )
 }
