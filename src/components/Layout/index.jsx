@@ -31,9 +31,7 @@ const Layout = ({ children }) => {
           <Resizer>
             <Header siteTitle={data.site.siteMetadata.title} />
             <AnimatePresence exitBeforeEnter initial={false}>
-              <div className="container max-w-4xl px-5 py-24 mx-auto text-center lg:px-20">
-                <main>{children}</main>
-              </div>
+              <main>{children}</main>
             </AnimatePresence>
             <Footer />
           </Resizer>

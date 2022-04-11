@@ -1,13 +1,14 @@
 import React from 'react'
 import Layout from '@/components/Layout'
 import SEO from '@/components/Seo'
-import Pipeline from '@/components/Featured/Justicia/Pipeline'
-
+import Intro from '@/components/Featured/NicolasZepeda/Intro'
+import Recuadro from '@/components/Featured/NicolasZepeda/Recuadro'
 const IndexPage = () => {
   return (
     <Layout>
-      <SEO title="Sistemas de Justicia en la nueva Constitución chilena - Interactivos La Tercera" />
-      <Pipeline />
+      <SEO title="Nicolás Zepeda - Interactivos La Tercera" />
+      <Intro />
+      <Recuadro />
     </Layout>
   )
 }

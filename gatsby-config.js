@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Sistemas de Justicia en la nueva Constitución chilena`,
+    title: `Nicolás Zepeda`,
     description: ``,
     author: `@latercera`,
     shareimg: `src/images/share.jpg`,
