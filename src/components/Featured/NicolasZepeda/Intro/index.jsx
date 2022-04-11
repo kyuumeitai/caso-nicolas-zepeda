@@ -218,7 +218,7 @@ const Intro = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, ease: false }}>
               <ContentWrapper>
-                <h1>Nicolás Zepeda</h1>
+                <h1>Nicolás Zepeda háganme un título plis</h1>
                 <small>intro</small>
               </ContentWrapper>
             </Content>

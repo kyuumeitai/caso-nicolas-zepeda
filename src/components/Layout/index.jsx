@@ -4,6 +4,8 @@ import { AnimatePresence } from 'framer-motion'
 import Resizer from '@/contexts/Resizer'
 import NavSize from '@/contexts/NavSize'
 import Theme from '@/contexts/Theming'
+import ModalProvider from '@/contexts/Modal'
+import Modal from '@/components/UI/Modal'
 
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
@@ -30,9 +32,12 @@ const Layout = ({ children }) => {
         <Theme>
           <Resizer>
             <Header siteTitle={data.site.siteMetadata.title} />
-            <AnimatePresence exitBeforeEnter initial={false}>
-              <main>{children}</main>
-            </AnimatePresence>
+            <ModalProvider>
+              <AnimatePresence exitBeforeEnter initial={false}>
+                <main>{children}</main>
+              </AnimatePresence>
+              <Modal />
+            </ModalProvider>
             <Footer />
           </Resizer>
         </Theme>

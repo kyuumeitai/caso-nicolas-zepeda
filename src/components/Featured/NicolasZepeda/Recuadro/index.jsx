@@ -39,16 +39,22 @@ const Content = styled(motion.div)`
   position: relative;
 `
 
-const MarcoBg = styled(motion.div)`
+const MarcoWrap = styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  will-change: transform;
-  background-color: white;
-  border: 3px solid #f0f;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  border: 10px solid tomato;
+`
+const MarcoBg = styled(motion.div)`
+  position: absolute;
   height: 400vh;
   width: 300vw;
-  top: -100vh;
+  background-color: white;
+  will-change: transform;
+
   svg {
     width: 100%;
   }
@@ -77,19 +83,20 @@ const Recuadro = () => {
     },
   )
 
-  const height = 6 // 6 paños
+  const height = 10 // 10 paños
 
   return (
-    <Container>
-      <MarcoBg
-        key="marco"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        ref={recuadroRef}
-        transition={{ duration: 1.7 }}
-        style={{ scale: recuadroProgressScale }}>
-        <Marco />
-      </MarcoBg>
+    <Container ref={containerRef} style={{ height: `${height * 100}vh` }}>
+      <MarcoWrap>
+        <MarcoBg
+          key="marco"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          ref={recuadroRef}
+          style={{ scale: recuadroProgressScale }}>
+          <Marco />
+        </MarcoBg>
+      </MarcoWrap>
     </Container>
   )
 }
