@@ -24,3 +24,5 @@ export const ModalProvider = props => {
     />
   )
 }
+
+export default ModalProvider

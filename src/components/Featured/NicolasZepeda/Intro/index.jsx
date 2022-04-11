@@ -190,7 +190,7 @@ const Intro = () => {
     <>
       <AnimatePresence>
         <RadialGradient
-          key="gradient"
+          key="radial-gradient"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.7 }}
@@ -199,7 +199,7 @@ const Intro = () => {
             y: gradientProgressY,
           }}
         />
-        <VectorWrap>
+        <VectorWrap key="vector-wrap">
           <ZepedaSvg
             ref={zepedaRef}
             style={{
@@ -208,7 +208,10 @@ const Intro = () => {
             <IntroSvg />
           </ZepedaSvg>
         </VectorWrap>
-        <Container ref={containerRef} style={{ height: `${height * 100}vh` }}>
+        <Container
+          key="container"
+          ref={containerRef}
+          style={{ height: `${height * 100}vh` }}>
           <Screen>
             <Content
               style={{
@@ -218,8 +221,7 @@ const Intro = () => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, ease: false }}>
               <ContentWrapper>
-                <h1>Nicolás Zepeda háganme un título plis</h1>
-                <small>intro</small>
+                <h1>hola</h1>{' '}
               </ContentWrapper>
             </Content>
           </Screen>
