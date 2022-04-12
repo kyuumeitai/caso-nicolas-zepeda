@@ -9,7 +9,7 @@ export function useModal() {
 }
 
 export const ModalProvider = props => {
-  const [contentKey, setContentKey] = useState(null)
+  const [content, setContent] = useState(null)
   const [active, setActive] = useState(false)
 
   return (
@@ -17,8 +17,8 @@ export const ModalProvider = props => {
       value={{
         active,
         setActive,
-        contentKey,
-        setContentKey,
+        content,
+        setContent,
       }}
       {...props}
     />

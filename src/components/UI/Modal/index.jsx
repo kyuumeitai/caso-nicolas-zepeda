@@ -19,13 +19,20 @@ const ModalContainer = styled(motion.div)`
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: saturate(200%) blur(5px);
 `
 
 const Modal = styled(motion.div)`
   background-color: white;
   box-shadow: -0.5em 0 0.5em 0 rgba(0, 0, 0, 0.2);
   max-width: 1020px;
-  min-height: 50%;
+  min-height: 90vh;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 0.5em;
   @media (max-width: 1020px) {
     max-width: 96%;
   }
@@ -34,10 +41,12 @@ const Modal = styled(motion.div)`
 const Close = styled(motion.button)`
   border-radius: 50%;
   border: 1px solid black;
-  position: relative;
+  position: absolute;
   transition: border-color 400ms ease;
   width: 50px;
   height: 50px;
+  top: 10px;
+  right: 10px;
   &:before,
   &:after {
     content: '';
@@ -82,7 +91,15 @@ const BodyContent = styled.div`
   // lo que sea que va en el body
 `
 
-const ContentContainer = styled.div``
+const ContentContainer = styled.div`
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 70px;
+  bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+`
 
 let modalAnimation = {
   enter: {
@@ -105,10 +122,9 @@ let modalAnimation = {
   },
 }
 
-const ModalComponent = ({ children }) => {
-  const { active, setActive, contentKey, setContentKey } = useModal()
+const ModalComponent = () => {
+  const { active, setActive, content } = useModal()
   const ref = useRef()
-  const [activeContent, setActiveContent] = useState({})
 
   useEffect(() => {
     if (active) {
@@ -139,9 +155,12 @@ const ModalComponent = ({ children }) => {
             }
           }}>
           <Modal variants={modalAnimation}>
+            <Close onClick={() => setActive(false)} />
+
             <ContentContainer>
-              <Close onClick={() => setActive(false)} />
-              <BodyContent>{children}</BodyContent>
+              <BodyContent>
+                <div dangerouslySetInnerHTML={{ __html: content }}></div>
+              </BodyContent>
             </ContentContainer>
           </Modal>
         </ModalContainer>

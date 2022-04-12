@@ -15,8 +15,6 @@ import { useTheme } from '@/contexts/Theming'
 
 import IntroSvg from './Intro'
 
-import { useModal } from '@/contexts/Modal'
-
 import LogoHabitacion106 from './LogoHabitacion106'
 
 const Container = styled.div`
@@ -222,8 +220,6 @@ const Intro = ({ title, description }) => {
   }, [area])
 
   const height = 4 // paños
-
-  const { setContentKey, setActive } = useModal()
 
   const replaceLineWithBr = text => {
     return text.replace(/\n/g, '<br />')

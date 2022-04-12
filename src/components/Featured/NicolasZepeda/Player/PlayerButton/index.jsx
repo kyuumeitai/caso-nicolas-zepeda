@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Play, Pause } from '../Buttons'
 import { usePlayer } from '@/contexts/Player'
@@ -29,7 +29,12 @@ const ListenButton = styled.button`
   text-align: left;
 `
 
-const PlayerButton = ({ episode }) => {
+const TranscriptionButton = styled.button`
+  appearance: none;
+  cursor: pointer;
+`
+
+const PlayerButton = ({ episode, transcription }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const { setEpisode } = usePlayer()
 
@@ -38,7 +43,13 @@ const PlayerButton = ({ episode }) => {
     setEpisode(episode)
   }
 
-  const { setContentKey, setActive } = useModal()
+  const { setActive, setContent } = useModal()
+
+  useEffect(() => {
+    if (transcription) {
+      setContent(transcription)
+    }
+  }, [transcription])
 
   return (
     <Wrap>
@@ -50,12 +61,12 @@ const PlayerButton = ({ episode }) => {
           <span className="font-bold hover:underline">Escuchar</span>
           <span className="text-xs text-gray-800 "> 4 min </span>{' '}
         </ListenButton>
-        <span className="text-gray-600 text-xs"> |</span>{' '}
-        <span
-          className="hover:underline text-xs text-gray-800"
+        <span className="text-xs text-gray-600"> |</span>{' '}
+        <TranscriptionButton
+          className="text-xs text-gray-800 hover:underline"
           onClick={() => setActive(true)}>
           Transcripción
-        </span>
+        </TranscriptionButton>
       </div>
     </Wrap>
   )

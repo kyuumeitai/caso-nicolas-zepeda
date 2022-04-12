@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { setActive } from '@/contexts/Modal'
 import PlayerButton from '@/components/Featured/NicolasZepeda/Player/PlayerButton'
 import cover from '@/images/habitacion-106-podcast-lt.jpg'
+import { remark } from 'remark'
+import recommended from 'remark-preset-lint-recommended'
+import remarkHtml from 'remark-html'
 
 const Wrap = styled.div`
   max-width: 40%;
@@ -32,6 +34,8 @@ const Section = ({
   audio,
   audiointro,
 }) => {
+  const [parsedHtml, setParsedHtml] = useState(null)
+
   const mockEpisode = {
     title: `${prefix}: ${title}`,
     podcastTitle: `Habitación 109: El juicio de Nicolás Zepeda`,
@@ -40,6 +44,23 @@ const Section = ({
       img: cover,
     },
   }
+
+  useEffect(() => {
+    if (script) {
+      remark()
+        .use(recommended)
+        .use(remarkHtml)
+        .process(script, (err, file) => {
+          // console.log('script', script, 'err', err, file)
+          if (err) {
+            console.log('err en remark', err)
+          } else {
+            const transhtml = file.value
+            setParsedHtml(transhtml)
+          }
+        })
+    }
+  }, [script])
 
   return (
     <Wrap>
@@ -54,7 +75,7 @@ const Section = ({
           className="mb-4"
           dangerouslySetInnerHTML={{ __html: description }}></div>
         <div>
-          <PlayerButton episode={mockEpisode} />
+          <PlayerButton episode={mockEpisode} transcription={parsedHtml} />
         </div>
       </div>
     </Wrap>

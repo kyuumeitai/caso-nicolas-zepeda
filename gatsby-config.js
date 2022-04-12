@@ -6,7 +6,7 @@ module.exports = {
     shareimg: `src/images/share.jpg`,
     fbappid: `1134891773353659`,
     domain: `https://interactivo.latercera.com`,
-    url: 'https://interactivo.latercera.com/habitacion-106-juicio-a-nicolas-zepeda',
+    url: 'https://interactivo.latercera.com/habitacion-106-juicio-a-nicolas-zepeda/',
     siteName: 'Interactivo La Tercera',
     author: `@latercera`,
     twitterHandle: `latercera`,
