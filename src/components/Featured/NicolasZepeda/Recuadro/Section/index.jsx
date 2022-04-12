@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { setActive } from '@/contexts/Modal'
 import PlayerButton from '@/components/Featured/NicolasZepeda/Player/PlayerButton'
+import cover from '@/images/habitacion-106-podcast-lt.jpg'
 
 const Wrap = styled.div`
   max-width: 40%;
@@ -20,9 +21,11 @@ const Section = ({
   episode,
 }) => {
   const mockEpisode = {
-    title: 'Episodio 1: Mándenme los audios',
+    title: `${prefix}: ${title}`,
+    podcastTitle: `Habitación 109: El juicio de Nicolás Zepeda`,
     enclosure: {
       url: 'https://rudo.video/redirector/mp3/b3d423c1f63f263984435ca24792109b.mp3',
+      img: cover,
     },
   }
 
