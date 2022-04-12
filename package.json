@@ -29,7 +29,8 @@
     "react-share": "^4.4.0",
     "styled-components": "^5.3.3",
     "scroll-lock": "^2.1.5",
-    "polished": "^4.2.2"
+    "polished": "^4.2.2",
+    "react-howler": "^5.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

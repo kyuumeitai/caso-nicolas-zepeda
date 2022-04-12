@@ -5,6 +5,9 @@ import Resizer from '@/contexts/Resizer'
 import NavSize from '@/contexts/NavSize'
 import Theme from '@/contexts/Theming'
 import ModalProvider from '@/contexts/Modal'
+import PlayerProvider from '@/contexts/Player'
+import Player from '@/components/Featured/NicolasZepeda/Player'
+
 import Modal from '@/components/UI/Modal'
 
 import PropTypes from 'prop-types'
@@ -31,14 +34,17 @@ const Layout = ({ children }) => {
       <NavSize>
         <Theme>
           <Resizer>
-            <Header siteTitle={data.site.siteMetadata.title} />
-            <ModalProvider>
-              <AnimatePresence exitBeforeEnter initial={false}>
-                <main key="main">{children}</main>
-              </AnimatePresence>
-              <Modal />
-            </ModalProvider>
-            <Footer />
+            <PlayerProvider>
+              <Header siteTitle={data.site.siteMetadata.title} />
+              <ModalProvider>
+                <AnimatePresence exitBeforeEnter initial={false}>
+                  <main key="main">{children}</main>
+                </AnimatePresence>
+                <Modal />
+                <Player />
+              </ModalProvider>
+              <Footer />
+            </PlayerProvider>
           </Resizer>
         </Theme>
       </NavSize>

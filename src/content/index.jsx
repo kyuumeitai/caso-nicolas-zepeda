@@ -1,11 +1,16 @@
 const data = {
-  title: `Misterio en la Habitación 106:
-  Las huellas de Nicolás Zepeda
+  title: `Habitación 106:
+  El Juicio a Nicolás Zepeda
   `,
-  description: `Hace cinco años, la estudiante japonesa Narumi Kurosaki desapareció en Besanzón, Francia. Todos los indicios seguidos por las autoridades locales apuntaban a la responsabilidad de su ex pareja, Nicolás Zepeda Contreras. La investigación reveló un tormentoso romance, la posesiva personalidad del joven chileno y sus sospechosos movimientos por Europa. Aquí presentamos, en 10 capítulos, las claves de un caso criminal que conmocionó a tres países.
+  description: `Hace cinco años, la estudiante japonesa <strong>Narumi Kurosaki</strong> desapareció en Besanzón, Francia. 
+  
+  Todos los indicios seguidos por las autoridades locales apuntaban a la responsabilidad de su ex pareja, Nicolás Zepeda Contreras. La investigación reveló un tormentoso romance, la posesiva personalidad del joven chileno y sus sospechosos movimientos por Europa. 
+  
+  Aquí presentamos, en 10 capítulos, las claves de un caso criminal que conmocionó a tres países.
   `,
   chapters: [
     {
+      prefix: `Episodio 1`,
       title: 'El acusado',
       description: `Durante el juicio fue retratado como “mentiroso”, “manipulador” y “narcisista”. La familia de la víctima incluso lo calificó de “monstruo”. Sus padres, en cambio, describieron a un joven ejemplar. ¿Quién es realmente Nicolás Zepeda?`,
       coordinates: {
@@ -50,6 +55,7 @@ const data = {
       `,
     },
     {
+      prefix: `Episodio 2`,
       title: `Relaciones tormentosas`,
       description: `En 2014, una beca del gobierno japonés le permitió a Zepeda entrar en la Universidad de Tsukuba como estudiante de intercambio. Allí conoció a Narumi Kurosaki, con quien inició un intenso y problemático romance. 
       `,
@@ -114,6 +120,7 @@ Esta fue la última conversación que ambos tuvieron hasta la inesperada visita 
       `,
     },
     {
+      prefix: `Episodio 3`,
       title: `Material inflamable`,
       description: `Dos meses después del quiebre, Zepeda viajó a Europa. Dice que quería analizar la posibilidad de continuar sus estudios allá. Después de un inusual recorrido por los bosques de la zona y de realizar extrañas compras en un supermercado, terminó frente a la puerta de Narumi. `,
       coordinates: {
@@ -172,6 +179,7 @@ Esta fue la última conversación que ambos tuvieron hasta la inesperada visita 
       `,
     },
     {
+      prefix: `Episodio 4`,
       title: `Sombra en el campus`,
       description: `En los días previos a la desaparición de Narumi, las cámaras de seguridad captaron a una persona merodeando su residencia. Varios estudiantes dicen haber visto a un hombre sospechoso en el edificio. ¿Dónde estaba Zepeda en esos momentos?`,
       coordinates: {
@@ -221,6 +229,7 @@ El chileno, una vez más, negó todo lo que había sido expuesto.
       `,
     },
     {
+      prefix: `Episodio 5`,
       title: `Habitación 106`,
       description: `La expareja se reunió en la tarde del 4 de diciembre. Zepeda asegura que fue algo “fortuito”, una versión que sus acusadores consideran absolutamente inverosímil. La cita terminaría a altas horas de la noche, entre gritos, en la pieza de Narumi Kurosaki.`,
       coordinates: {
@@ -270,6 +279,7 @@ Los testimonios de Zepeda fueron puestos a prueba constantemente por el juez, la
       `,
     },
     {
+      prefix: `Episodio 6`,
       title: `Evaporada`,
       description: `Las autoridades de la universidad tardaron en reportar la desaparición de Narumi. Esta demora causó que la policía local empezara su investigación recién una semana después del encuentro con Zepeda. El chileno no fue su primer sospechoso.`,
       coordinates: {
@@ -280,6 +290,7 @@ Los testimonios de Zepeda fueron puestos a prueba constantemente por el juez, la
       `,
     },
     {
+      prefix: `Episodio 7`,
       title: `En lo profundo del bosque`,
       description: `Apenas unas horas después de dejar la residencia de Narumi, el auto de Zepeda fue geolocalizado en un bosque cerca de Besanzón. Las autoridades especulan que los restos de la japonesa terminaron en ese lugar, pero hay un dilema: no tienen cómo probarlo.
       `,
@@ -321,6 +332,7 @@ La esperanza de los investigadores es que los restos aparezcan tarde o temprano,
       `,
     },
     {
+      prefix: `Episodio 8`,
       title: `Palabras prestadas`,
       description: `La familia Kurosaki recibió mensajes extraños de Narumi en los días posteriores a su encuentro con Zepeda. Su manera de escribir no parecía natural. ¿Era realmente ella? Por esas mismas fechas, Zepeda también estaba preocupado de cómo expresarse en japonés.`,
       coordinates: {
@@ -331,6 +343,7 @@ La esperanza de los investigadores es que los restos aparezcan tarde o temprano,
       `,
     },
     {
+      prefix: `Episodio 9`,
       title: `Visita familiar`,
       description: `Antes de regresar a Chile, Zepeda pasó cinco días en Barcelona junto a su primo Juan Pablo Ramírez. Al llegar, le pidió a su anfitrión que no comentara su visita con nadie. Ramírez solo entendió que pasaba algo raro cuando su primo le hizo unas desconcertantes preguntas.
       `,
@@ -342,6 +355,7 @@ La esperanza de los investigadores es que los restos aparezcan tarde o temprano,
       `,
     },
     {
+      prefix: `Episodio 10`,
       title: `La maquinaria judicial`,
       description: `Zepeda logró refugiarse en Chile antes de que la policía francesa exigiera su detención. Desde entonces, su vida quedó sujeta a los distintos procesos en su contra y en manos de juristas de alto perfil como Jacqueline Laffont, exdefensora de Nicholas Sarkozy.`,
       coordinates: {
@@ -352,7 +366,8 @@ La esperanza de los investigadores es que los restos aparezcan tarde o temprano,
       `,
     },
     {
-      title: `Epílogo: Post fallo`,
+      prefix: `Epílogo`,
+      title: ` Post fallo`,
       description: ``,
       coordinates: {
         x: 0,
