@@ -17,6 +17,8 @@ import IntroSvg from './Intro'
 
 import { useModal } from '@/contexts/Modal'
 
+import LogoHabitacion106 from './LogoHabitacion106'
+
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
@@ -115,6 +117,19 @@ const ZepedaSvg = styled(motion.div)`
   }
 `
 
+const LogoWrapper = styled(motion.div)`
+  max-width: 500px;
+  margin: 0 auto;
+  svg {
+    max-width: 100%;
+  }
+`
+
+const BajadaWrapper = styled(motion.div)`
+  max-width: 500px;
+  margin: 0 auto;
+`
+
 const Intro = ({ title, description }) => {
   const area = useGetResizer()
   const containerRef = useRef()
@@ -156,11 +171,25 @@ const Intro = ({ title, description }) => {
     { ease: easing.outQuad },
   )
 
-  const fallingZepedaScrollY = useTransform(scrollY, [0, 0], [0, 0], {
-    ease: easing.outQuad,
-  })
+  const fallingZepedaScrollY = useTransform(
+    scrollY,
+    [0, windowHeight * 3],
+    [0, windowHeight * 0.1],
+    {
+      ease: easing.outQuad,
+    },
+  )
 
-  const fallingZepedaAnimationY = useMotionValue(-600)
+  const shrinkZepedaOnScrollY = useTransform(
+    scrollY,
+    [0, windowHeight * 3],
+    [1, 0.5],
+    {
+      ease: easing.outQuad,
+    },
+  )
+
+  const fallingZepedaAnimationY = useMotionValue(-20)
 
   const fallingZepedaProgressY = useTransform(
     [scrollY, fallingZepedaScrollY, fallingZepedaAnimationY],
@@ -175,8 +204,8 @@ const Intro = ({ title, description }) => {
 
   const fallingZepedaOpacity = useTransform(
     scrollY,
-    [0, windowHeight * 2, windowHeight * 4.5],
-    [1, 1, 0],
+    [0, windowHeight * 3, windowHeight * 4],
+    [0, 1, 1],
     { ease: easing.outQuad },
   )
 
@@ -189,12 +218,14 @@ const Intro = ({ title, description }) => {
     setSizes()
   }, [area])
 
-  const height = 3 // 3 paños
+  const height = 4 // paños
 
   const { setContentKey, setActive } = useModal()
+
   const replaceLineWithBr = text => {
     return text.replace(/\n/g, '<br />')
   }
+
   return (
     <>
       <AnimatePresence>
@@ -221,14 +252,16 @@ const Intro = ({ title, description }) => {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.4, ease: false }}>
               <ContentWrapper>
-                <h1
-                  dangerouslySetInnerHTML={{
-                    __html: replaceLineWithBr(title),
-                  }}></h1>
-                <div
+                <LogoWrapper>
+                  <h1>
+                    <LogoHabitacion106 alt={title} />
+                  </h1>
+                </LogoWrapper>
+                <BajadaWrapper
                   dangerouslySetInnerHTML={{
                     __html: replaceLineWithBr(description),
-                  }}></div>
+                  }}
+                />
               </ContentWrapper>
             </Content>
           </Screen>
@@ -238,6 +271,8 @@ const Intro = ({ title, description }) => {
             ref={zepedaRef}
             style={{
               opacity: fallingZepedaOpacity,
+              y: fallingZepedaProgressY,
+              scale: shrinkZepedaOnScrollY,
             }}>
             <IntroSvg />
           </ZepedaSvg>
