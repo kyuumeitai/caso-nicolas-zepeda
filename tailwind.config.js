@@ -5,6 +5,9 @@ module.exports = {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
         heading: ['Acta Display', 'serif'],
+        actaBook: ['Acta Book', 'serif'],
+        actaHeadline: ['Acta Headline', 'serif'],
+        actaDisplay: ['Acta Display', 'serif'],
       },
       colors: {
         red: '#B10925',

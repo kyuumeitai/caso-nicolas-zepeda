@@ -34,7 +34,7 @@ const Section = ({
   return (
     <Wrap>
       <div className="container h-16 px-2 mx-auto sm:px-4 lg:px-20">
-        <h2 className="mb-2">
+        <h2 className="mb-4 text-6xl leading-none font-actaDisplay ">
           <small className="block font-sans text-base font-bold tracking-wide ">
             {prefix}
           </small>

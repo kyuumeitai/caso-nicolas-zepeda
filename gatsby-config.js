@@ -1,31 +1,24 @@
 module.exports = {
   siteMetadata: {
-    title: `Nicolás Zepeda`,
+    title: `Habitación 106: El Juicio a Nicolás Zepeda`,
     description: ``,
     author: `@latercera`,
     shareimg: `src/images/share.jpg`,
     fbappid: `1134891773353659`,
     domain: `https://interactivo.latercera.com`,
-    url: 'https://interactivo.latercera.com/sistemas-de-justicia-nueva-constitucion',
+    url: 'https://interactivo.latercera.com/habitacion-106-juicio-a-nicolas-zepeda',
     siteName: 'Interactivo La Tercera',
     author: `@latercera`,
     twitterHandle: `latercera`,
-    hashtags: [`#reconstitucion`],
+    hashtags: [`#habitacion106`, `#casoNarumi`, `#NicolasZepeda`],
     siteUrl: 'https://interactivo.latercera.com',
   },
-  pathPrefix: `/sistemas-de-justicia-nueva-constitucion`,
+  pathPrefix: `/habitacion-106-juicio-a-nicolas-zepeda`,
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-tailwindcss`,
     `gatsby-plugin-postcss`,
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`homemade apple`],
-        display: 'swap',
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -8,7 +8,7 @@ const Footer = () => (
     <PFooter />
     <StFooterContent>
       <a
-        href="https://www.latercera.com/?utm_medium=especiales&utm_source=sistemas-de-justicia-nueva-constitucion&utm_content=footer"
+        href="https://www.latercera.com/?utm_medium=especiales&utm_source=habitacion-106-juicio-a-nicolas-zepeda&utm_content=footer"
         className="slotLab"
         target="_blank"
         rel="noopener noreferrer">

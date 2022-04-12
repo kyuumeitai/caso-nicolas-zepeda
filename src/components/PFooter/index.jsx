@@ -5,7 +5,7 @@ import { StPFooter } from './style.css'
 const PFooter = () => (
   <StPFooter>
     <a
-      href="https://suscripciondigital.latercera.com/?utm_medium=especialeslt&utm_source=sistemas-de-justicia-nueva-constitucion&utm_content=footer"
+      href="https://suscripciondigital.latercera.com/?utm_medium=especialeslt&utm_source=habitacion-106-juicio-a-nicolas-zepeda&utm_content=footer"
       target="_blank"
       rel="noopener noreferrer"
       className="block p-3 mx-auto text-center md:max-w-screen-sm sm:p-8">
