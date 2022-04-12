@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { usePlayer } from '@/contexts/Player'
 import ReactHowler from 'react-howler'
-import { Play, Pause, Backwards, Forwards, Loading } from './Buttons'
 import styled, { keyframes } from 'styled-components'
+import durationFormatter from '@/utilities/formatter'
+
 import ProgressBar from './ProgressBar'
+import { Play, Pause, Backwards, Forwards, Loading } from './Buttons'
 
 const spinner = keyframes`
   0% {
@@ -91,6 +93,22 @@ const Artwork = styled.div`
 
 const Buttons = styled.div``
 
+const ProgressWrapper = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  small {
+    font-size: 0.65rem;
+    line-height: 1.7;
+    display: block;
+    margin-bottom: 4px;
+    &:last-of-type {
+      text-align: right;
+    }
+  }
+`
+
 const Player = () => {
   const [url, setUrl] = useState(null)
   const [loaded, setLoaded] = useState(false)
@@ -125,21 +143,15 @@ const Player = () => {
 
   const playerRef = useRef(null)
 
-  const handleInteract = () => {
-    console.log('interact')
-  }
-
   const handleOnLoad = () => {
     const soundDuration = playerRef.current?.duration()
     if (soundDuration) {
-      console.log('la duration', duration)
       setDuration(soundDuration)
     }
     setLoaded(true)
   }
 
   const handleOnSeek = e => {
-    console.log('handleOnSeek', e)
     setSeek(e.target.value)
     playerRef.current?.seek(e.target.value)
   }
@@ -164,13 +176,21 @@ const Player = () => {
             <h4 className="text-sm">{podcastTitle}</h4>
           </Metadata>
           <Buttons>
-            <ProgressBar
-              onSeek={e => handleOnSeek(e)}
-              duration={duration}
-              seek={seek}
-              onChangeStart={() => setIsSeeking(true)}
-              onChangeEnd={() => setIsSeeking(false)}
-            />
+            <ProgressWrapper>
+              <small className="time-passed">
+                {seek && durationFormatter(seek)}
+              </small>
+              <ProgressBar
+                onSeek={e => handleOnSeek(e)}
+                duration={duration}
+                seek={seek}
+                onChangeStart={() => setIsSeeking(true)}
+                onChangeEnd={() => setIsSeeking(false)}
+              />
+              <small className="time-left">
+                {duration && durationFormatter(duration)}
+              </small>
+            </ProgressWrapper>
             <ReactHowler
               src={[url]}
               playing={playing}

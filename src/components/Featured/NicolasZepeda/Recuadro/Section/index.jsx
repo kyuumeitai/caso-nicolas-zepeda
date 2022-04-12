@@ -19,12 +19,14 @@ const Section = ({
   coordinates,
   script,
   episode,
+  audio,
+  audiointro,
 }) => {
   const mockEpisode = {
     title: `${prefix}: ${title}`,
     podcastTitle: `Habitación 109: El juicio de Nicolás Zepeda`,
     enclosure: {
-      url: 'https://rudo.video/redirector/mp3/b3d423c1f63f263984435ca24792109b.mp3',
+      url: `${audio ? audio : null}`,
       img: cover,
     },
   }
