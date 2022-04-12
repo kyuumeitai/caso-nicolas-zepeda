@@ -45,13 +45,18 @@ const Section = ({
     },
   }
 
+  //function for add extra line breaks to string
+
+  const addLineBreaks = str => {
+    return str.replace(/\n/g, '<br /><br />')
+  }
+
   useEffect(() => {
     if (script) {
       remark()
         .use(recommended)
         .use(remarkHtml)
-        .process(script, (err, file) => {
-          // console.log('script', script, 'err', err, file)
+        .process(addLineBreaks(script), (err, file) => {
           if (err) {
             console.log('err en remark', err)
           } else {

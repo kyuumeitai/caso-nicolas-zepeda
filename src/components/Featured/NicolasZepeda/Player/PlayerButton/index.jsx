@@ -45,11 +45,12 @@ const PlayerButton = ({ episode, transcription }) => {
 
   const { setActive, setContent } = useModal()
 
-  useEffect(() => {
+  const handleTranscriptionClick = () => {
     if (transcription) {
       setContent(transcription)
+      setActive(true)
     }
-  }, [transcription])
+  }
 
   return (
     <Wrap>
@@ -62,11 +63,13 @@ const PlayerButton = ({ episode, transcription }) => {
           <span className="text-xs text-gray-800 "> 4 min </span>{' '}
         </ListenButton>
         <span className="text-xs text-gray-600"> |</span>{' '}
-        <TranscriptionButton
-          className="text-xs text-gray-800 hover:underline"
-          onClick={() => setActive(true)}>
-          Transcripción
-        </TranscriptionButton>
+        {transcription && (
+          <TranscriptionButton
+            className="text-xs text-gray-800 hover:underline"
+            onClick={() => handleTranscriptionClick()}>
+            Transcripción
+          </TranscriptionButton>
+        )}
       </div>
     </Wrap>
   )

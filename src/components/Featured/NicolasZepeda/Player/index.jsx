@@ -287,12 +287,12 @@ const Player = () => {
               className={loaded ? null : 'loading'}>
               {playing ? <>{loaded ? <Pause /> : <Loading />}</> : <Play />}
             </Button>
-            <Button aria-label="Backwards" onClick={() => setPlaying(false)}>
+            {/* <Button aria-label="Backwards" onClick={() => setPlaying(false)}>
               <Backwards />
             </Button>
             <Button aria-label="Forwards" onClick={() => setPlaying(false)}>
               <Forwards />
-            </Button>
+            </Button> */}
           </Buttons>
         </Controls>
       </Inner>
