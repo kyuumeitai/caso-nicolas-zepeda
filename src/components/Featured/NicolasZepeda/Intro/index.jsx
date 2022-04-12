@@ -80,6 +80,8 @@ const ContentWrapper = styled.div`
     min-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    padding: 0 1rem;
+    margin-top: 150px;
   }
   svg {
     width: 100%;
@@ -110,6 +112,7 @@ const ZepedaSvg = styled(motion.div)`
   width: 600px;
   @media (max-width: 700px) {
     width: 230px;
+    bottom: 300px;
   }
   svg {
     margin-left: auto;
