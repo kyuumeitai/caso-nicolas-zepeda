@@ -4,6 +4,7 @@ html {
   @apply text-black;
   font-family: 'Inter', sans-serif;
   letter-spacing: -0.025em;
+  user-select: none;
 }
 strong {
   font-weight: 800;
