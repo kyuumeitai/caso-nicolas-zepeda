@@ -10,6 +10,16 @@ const Wrap = styled.div`
   min-height: 90vh;
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    max-width: 100%;
+  }
+  h2 {
+    font-size: 3.75rem;
+    line-height: 0.8;
+    @media (max-width: 768px) {
+      font-size: 3rem;
+    }
+  }
 `
 
 const Section = ({
@@ -34,16 +44,18 @@ const Section = ({
   return (
     <Wrap>
       <div className="container h-16 px-2 mx-auto sm:px-4 lg:px-20">
-        <h2 className="mb-4 text-6xl leading-none font-actaDisplay ">
+        <h2 className="mb-4 font-actaDisplay ">
           <small className="block font-sans text-base font-bold tracking-wide ">
             {prefix}
           </small>
           {title}
         </h2>
         <div
-          className="mb-2"
+          className="mb-4"
           dangerouslySetInnerHTML={{ __html: description }}></div>
-        <PlayerButton episode={mockEpisode} />
+        <div>
+          <PlayerButton episode={mockEpisode} />
+        </div>
       </div>
     </Wrap>
   )
