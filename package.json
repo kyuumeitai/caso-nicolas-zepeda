@@ -30,7 +30,10 @@
     "styled-components": "^5.3.3",
     "scroll-lock": "^2.1.5",
     "polished": "^4.2.2",
-    "react-howler": "^5.2.0"
+    "react-howler": "^5.2.0",
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/styled": "^11",
+    "@emotion/react": "^11"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

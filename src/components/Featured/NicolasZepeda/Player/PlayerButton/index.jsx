@@ -6,6 +6,8 @@ import { usePlayer } from '@/contexts/Player'
 const PlayButton = styled.button`
   appearance: none;
   cursor: pointer;
+  border: 1px solid black;
+  border-radius: 50%;
 `
 
 const PlayerButton = ({ episode }) => {
@@ -13,7 +15,6 @@ const PlayerButton = ({ episode }) => {
   const { setEpisode } = usePlayer()
 
   const handlePlay = () => {
-    console.log('handlePlay!')
     setIsPlaying(true)
     setEpisode(episode)
   }
