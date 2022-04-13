@@ -74,7 +74,6 @@ const Recuadro = ({ chapters }) => {
   const recuadroRef = useRef()
   const [windowHeight, setWindowHeight] = useState(768)
   const { scrollY } = useViewportScroll()
-  console.log('el contento', content)
   const recuadroXenY = useTransform(
     scrollY,
     [

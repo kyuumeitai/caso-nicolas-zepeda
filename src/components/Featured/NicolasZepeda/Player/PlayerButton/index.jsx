@@ -38,8 +38,6 @@ const PlayerButton = ({ episode, transcription }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const { setEpisode } = usePlayer()
 
-  console.log('el episode', episode)
-
   const handlePlay = () => {
     setIsPlaying(true)
     setEpisode(episode)

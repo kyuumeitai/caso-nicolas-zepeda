@@ -40,8 +40,8 @@ const Button = styled.button`
 `
 
 const Wrap = styled.div`
-  background-color: rgba(0, 0, 0, 0.8);
-  backdrop-filter: saturate(300%) blur(10px);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: saturate(400%) blur(10px);
   padding: 0.5rem;
   box-shadow: 0 8px 16px -4px rgba(9, 30, 66, 0.25),
     0 0 1px rgba(9, 30, 66, 0.31);
@@ -53,12 +53,6 @@ const Inner = styled.div`
   display: grid;
   grid-template-columns: 120px 1fr;
   column-gap: 20px;
-  /* background-image: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.05),
-    rgba(0, 0, 0, 0)
-  );
-  background-position: 130px 0; */
 `
 
 const ProgressContainer = styled.div`
@@ -145,8 +139,8 @@ const Player = () => {
   const [duration, setDuration] = useState(0)
   const [seek, setSeek] = useState(0.0)
   const [playing, setPlaying] = useState(false)
+  const [isActuallyPlaying, setIsActuallyPlaying] = useState(false)
   const [paused, setPaused] = useState(false)
-  const [muted, setMuted] = useState(false)
   const [isSeeking, setIsSeeking] = useState(false)
 
   const playerRef = useRef()
@@ -168,27 +162,25 @@ const Player = () => {
     setLoaded(true)
   }
 
-  const handleOnPlay = () => {
+  const handleOnPlay = bla => {
+    console.log('on play', bla)
     setPlaying(true)
-    // renderSeekPos()
+    setIsActuallyPlaying(true)
   }
 
-  const handleStop = () => {
-    playerRef.current?.stop()
-    setPlaying(false)
-    // renderSeekPos()
+  const handleOnStop = () => {
+    console.log('click stop')
+    setPaused(true)
+    setIsActuallyPlaying(false)
+  }
+
+  const handleOnPause = () => {
+    console.log('click pause')
+    setPaused(true)
+    setIsActuallyPlaying(false)
   }
 
   const handleOnEnd = () => {}
-
-  const handleMouseDownSeek = () => {
-    setIsSeeking(true)
-  }
-
-  const handleMouseUpSeek = e => {
-    setIsSeeking(false)
-    playerRef.current?.seek(parseFloat(e.target.value))
-  }
 
   const handleSeekingChange = e => {
     setSeek(parseFloat(`${e[0]}`))
@@ -208,11 +200,11 @@ const Player = () => {
     return () => cancelAnimationFrame(timer)
   }, [playing, isSeeking])
 
-  // const renderSeekPos = () => {
-  //   if (!isSeeking) {
-  //     setSeek(playerRef.current?.seek())
-  //   }
-  // }
+  const onPlayError = () => {
+    playerRef.once('unlock', () => {
+      playerRef.play()
+    })
+  }
 
   if (!url) return null
   if (!playerInBottom) return null
@@ -237,20 +229,6 @@ const Player = () => {
                 {seek && durationFormatter(seek)}
               </small>
               <ProgressContainer>
-                {/* <input
-                  type="range"
-                  min="0"
-                  max={duration ? duration.toFixed(2) : 0}
-                  step=".01"
-                  value={seek}
-                  onChange={handleSeekingChange}
-                  onMouseDown={handleMouseDownSeek}
-                  onMouseUp={handleMouseUpSeek}
-
-                  // onChangeStart={() => onChangeStart()}
-                  // onChangeEnd={() => onChangeEnd()}
-                /> */}
-
                 <RangeSlider
                   aria-label={['min', 'max']}
                   step={0.1}
@@ -279,6 +257,11 @@ const Player = () => {
               onLoad={() => handleOnLoad()}
               onPlay={() => handleOnPlay()}
               onEnd={() => handleOnEnd()}
+              onStop={() => handleOnStop()}
+              onPause={() => handleOnPause()}
+              onPlayError={() => onPlayError()}
+              onLoadError={() => onPlayError()}
+              html5={true}
               ref={ref => (playerRef.current = ref)}
             />
             <Button
