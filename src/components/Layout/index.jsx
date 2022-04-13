@@ -7,7 +7,7 @@ import Theme from '@/contexts/Theming'
 import ModalProvider from '@/contexts/Modal'
 import PlayerProvider from '@/contexts/Player'
 import Player from '@/components/Featured/NicolasZepeda/Player'
-
+import Credits from '@/components/UI/Credits'
 import Modal from '@/components/UI/Modal'
 
 import PropTypes from 'prop-types'
@@ -43,6 +43,7 @@ const Layout = ({ children }) => {
                 <Modal />
                 <Player />
               </ModalProvider>
+              <Credits />
               <Footer />
             </PlayerProvider>
           </Resizer>

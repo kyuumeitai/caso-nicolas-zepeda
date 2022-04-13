@@ -11,6 +11,10 @@ import {
   ActaHeadlineBook2,
   ActaHeadlineBookItalic,
   ActaHeadlineBookItalic2,
+  ActaAgate,
+  ActaAgate2,
+  ActaAgateB,
+  ActaAgateB2,
   InterRegular,
   InterRegular2,
   InterBold,
@@ -60,6 +64,23 @@ export default createGlobalStyle`
     font-weight: normal;
     font-style: italic;
   }
+
+  @font-face {
+    font-family: 'Acta Agate';
+    src: url(${ActaAgate2}) format('woff2'),
+          url(${ActaAgate}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Acta Agate';
+    src: url(${ActaAgateB2}) format('woff2'),
+          url(${ActaAgateB}) format('woff');
+    font-weight: bold;
+    font-style: normal;
+  }
+
   @font-face {
     font-family: 'Inter';
     src: url(${InterRegular2}) format('woff2'),

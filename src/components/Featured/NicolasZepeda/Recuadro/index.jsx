@@ -74,7 +74,7 @@ const Recuadro = ({ chapters }) => {
   const recuadroRef = useRef()
   const [windowHeight, setWindowHeight] = useState(768)
   const { scrollY } = useViewportScroll()
-
+  console.log('el contento', content)
   const recuadroXenY = useTransform(
     scrollY,
     [
@@ -124,8 +124,8 @@ const Recuadro = ({ chapters }) => {
           </AnimatePresence>
         }
       </Content>
-
-      {/* <MarcoWrap>
+      {/* 
+      <MarcoWrap>
         <MarcoBg
           key="marco"
           ref={recuadroRef}

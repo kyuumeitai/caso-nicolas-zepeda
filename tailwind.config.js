@@ -8,6 +8,7 @@ module.exports = {
         actaBook: ['Acta Book', 'serif'],
         actaHeadline: ['Acta Headline', 'serif'],
         actaDisplay: ['Acta Display', 'serif'],
+        actaAgate: ['Acta Agate', 'serif'],
       },
       colors: {
         red: '#B10925',
