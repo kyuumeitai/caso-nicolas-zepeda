@@ -507,7 +507,7 @@ Zepeda dejó Barcelona el 12 de diciembre y regresó a Ginebra para conectar con
     },
     {
       audio:
-        'https://interactivo.latercera.com/zepeda-assets/v2/CAP%2010%20FX.mp3',
+        'https://interactivo.latercera.com/zepeda-assets/v3/CAP%201O%20OK.mp3',
       length: '5:18',
       prefix: `Episodio 10`,
       title: `La maquinaria judicial`,
