@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-const Container = styled.header``
+const Container = styled.header`
+  position: relative;
+  z-index: 3;
+`
 
 const StLogo = styled.h1`
   font-size: 10px;
