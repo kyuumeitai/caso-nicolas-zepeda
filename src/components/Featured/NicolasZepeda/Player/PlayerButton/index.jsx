@@ -38,16 +38,23 @@ const PlayerButton = ({ episode, transcription }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const { setEpisode } = usePlayer()
 
+  console.log('el episode', episode)
+
   const handlePlay = () => {
     setIsPlaying(true)
     setEpisode(episode)
   }
 
-  const { setActive, setContent } = useModal()
+  const { setActive, setContent, setTitle } = useModal()
+
+  const { title } = episode
+
+  const titleFormatter = `Transcripción: <strong>${title}</strong>`
 
   const handleTranscriptionClick = () => {
     if (transcription) {
       setContent(transcription)
+      setTitle(titleFormatter)
       setActive(true)
     }
   }

@@ -43,10 +43,10 @@ const Close = styled(motion.button)`
   border: 1px solid black;
   position: absolute;
   transition: border-color 400ms ease;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   top: 10px;
-  right: 10px;
+  right: 8px;
   &:before,
   &:after {
     content: '';
@@ -101,6 +101,14 @@ const ContentContainer = styled.div`
   overflow-y: auto;
 `
 
+const TitleContainer = styled.div`
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  right: 50px;
+  overflow: auto;
+`
+
 let modalAnimation = {
   enter: {
     x: '0%',
@@ -123,7 +131,7 @@ let modalAnimation = {
 }
 
 const ModalComponent = () => {
-  const { active, setActive, content } = useModal()
+  const { active, setActive, content, title } = useModal()
   const ref = useRef()
 
   useEffect(() => {
@@ -156,7 +164,8 @@ const ModalComponent = () => {
           }}>
           <Modal variants={modalAnimation}>
             <Close onClick={() => setActive(false)} />
-
+            <TitleContainer
+              dangerouslySetInnerHTML={{ __html: title }}></TitleContainer>
             <ContentContainer>
               <BodyContent>
                 <div dangerouslySetInnerHTML={{ __html: content }}></div>
