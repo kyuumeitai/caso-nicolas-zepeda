@@ -94,7 +94,7 @@ const Recuadro = ({ chapters }) => {
 
   return (
     <Container ref={containerRef} style={{ height: `${height * 100 * 2}vh` }}>
-      <Content>
+      <Content className="container mx-auto ">
         {
           <AnimatePresence>
             {chapters.map((chapter, index) => (
