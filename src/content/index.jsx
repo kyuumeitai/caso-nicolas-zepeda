@@ -21,8 +21,8 @@ const data = {
       title: 'El acusado',
       description: `Durante el juicio fue retratado como “mentiroso”, “manipulador” y “narcisista”. La familia de la víctima incluso lo calificó de “monstruo”. Sus padres, en cambio, describieron a un joven ejemplar. ¿Quién es realmente Nicolás Zepeda?`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 1915,
+        y: 1787,
       },
       script: `
 **Narrador:** 
@@ -71,8 +71,8 @@ Zepeda se fue a estudiar a Santiago en 2009, mientras que su familia dejó Temuc
       description: `En 2014, una beca del gobierno japonés le permitió a Zepeda entrar en la Universidad de Tsukuba como estudiante de intercambio. Allí conoció a Narumi Kurosaki, con quien inició un intenso y problemático romance.
       `,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 3005,
+        y: 1200,
       },
       script: `
 **Narrador:**
@@ -131,8 +131,8 @@ Esta fue la última conversación que ambos tuvieron hasta la inesperada visita 
       title: `Material inflamable`,
       description: `Dos meses después del quiebre, Zepeda viajó a Europa. Dice que quería analizar la posibilidad de continuar sus estudios allá. Después de un inusual recorrido por los bosques de la zona y de realizar extrañas compras en un supermercado, terminó frente a la puerta de Narumi.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 890,
+        y: 782,
       },
       script: `
 **Narrador:** 
@@ -186,8 +186,8 @@ Al día siguiente, Zepeda estrenó su nueva tenida cuando se reencontró con su 
       title: `Sombra en el campus`,
       description: `En los días previos a la desaparición de Narumi, las cámaras de seguridad captaron a una persona merodeando su residencia. Varios estudiantes dicen haber visto a un hombre sospechoso en el edificio. ¿Dónde estaba Zepeda en esos momentos?`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 2856,
+        y: 2793,
       },
       script: `
 **Narrador:** 
@@ -237,8 +237,8 @@ El chileno, una vez más, negó todo lo que había sido expuesto.
       title: `Habitación 106`,
       description: `La expareja se reunió en la tarde del 4 de diciembre. Zepeda asegura que fue algo “fortuito”, una versión que sus acusadores consideran absolutamente inverosímil. La cita terminaría a altas horas de la noche, entre gritos, en la pieza de Narumi Kurosaki.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 1691,
+        y: 2780,
       },
       script: `
 **Narrador:** 
@@ -286,8 +286,8 @@ Los testimonios de Zepeda fueron puestos a prueba constantemente por el juez, la
       title: `Evaporada`,
       description: `Las autoridades de la universidad tardaron en reportar la desaparición de Narumi. Esta demora causó que la policía local empezara su investigación recién una semana después del encuentro con Zepeda. El chileno no fue su primer sospechoso.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 2774,
+        y: 1987,
       },
       script: `
 **Narrador:** 
@@ -341,8 +341,8 @@ Cuando la policía hizo estos descubrimientos ya era muy tarde. Zepeda había de
       title: `En lo profundo del bosque`,
       description: `Apenas unas horas después de dejar la residencia de Narumi, el auto de Zepeda fue geolocalizado en un bosque cerca de Besanzón. Las autoridades especulan que los restos de la japonesa terminaron en ese lugar, pero hay un dilema: no tienen cómo probarlo.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 2130,
+        y: 590,
       },
       script: `
 **David Borne:**  Hemos alcanzado la certeza de que Narumi está muerta. Desde el 4 de diciembre de 2016 no ha dado señales de vida ni ha sido vista en ninguna parte. La ausencia de transferencias bancarias, la presencia de efectivo en la billetera que dejó en su habitación, sus proyectos y la falta de señales de depresión también nos hacen descartar un suicidio.
@@ -383,8 +383,8 @@ La esperanza de los investigadores es que los restos aparezcan tarde o temprano,
       title: `Palabras prestadas`,
       description: `La familia Kurosaki recibió mensajes extraños de Narumi en los días posteriores a su encuentro con Zepeda. Su manera de escribir no parecía natural. ¿Era realmente ella? Por esas mismas fechas, Zepeda también estaba preocupado de cómo expresarse en japonés.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 1760,
+        y: 3917,
       },
       script: `
 **Narrador:** 
@@ -451,8 +451,8 @@ Todas las comunicaciones de Narumi con familiares y amigos cesaron el 13 de dici
       title: `Visita familiar`,
       description: `Antes de regresar a Chile, Zepeda pasó cinco días en Barcelona junto a su primo Juan Felipe Ramírez. Al llegar, le pidió a su anfitrión que no comentara su visita con nadie. Ramírez intuyó que pasaba algo raro cuando le hicieron unas desconcertantes preguntas.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 1133,
+        y: 1626,
       },
       script: `
 **Narrador:** 
@@ -497,8 +497,8 @@ Zepeda dejó Barcelona el 12 de diciembre y regresó a Ginebra para conectar con
       title: `La maquinaria judicial`,
       description: `Zepeda logró refugiarse en Chile antes de que la policía francesa exigiera su detención. Desde entonces, su vida quedó sujeta a un proceso internacional y en manos de juristas de alto perfil como Jacqueline Laffont, exdefensora de Nicolas Sarkozy.`,
       coordinates: {
-        x: 0,
-        y: 0,
+        x: 757,
+        y: 2908,
       },
       script: `
 **Narrador:** Poco antes de Año Nuevo, el 29 de diciembre de 2016, Nicolás Zepeda presentó una carta con una declaración voluntaria a la PDI. Por casi cuatro años, esta fue su única versión de lo ocurrido. El documento le pesa a su defensa hasta hoy por la cantidad de inconsistencias que sus acusadores han encontrado respecto de sus versiones más recientes. En pocas palabras, se cree que su testimonio solamente se “acomodó” a las primeras informaciones que habían aparecido en los medios.
@@ -536,6 +536,7 @@ A minutos del veredicto, otra vez entre lágrimas, Zepeda se paró delante de to
       coordinates: {
         x: 0,
         y: 0,
+        zoom: 0.2,
       },
       script: `
 **Narrador:**

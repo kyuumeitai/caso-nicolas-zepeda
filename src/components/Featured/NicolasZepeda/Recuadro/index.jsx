@@ -10,10 +10,11 @@ import {
   animate,
 } from 'framer-motion'
 
+import content from '@/content'
+
 import { useGetResizer } from '@/contexts/Resizer'
 
 import Marco from './Marco'
-
 import Section from './Section'
 
 const Container = styled.div`
@@ -74,14 +75,27 @@ const Recuadro = ({ chapters }) => {
   const [windowHeight, setWindowHeight] = useState(768)
   const { scrollY } = useViewportScroll()
 
-  const recuadroProgressY = useTransform(
+  const recuadroXenY = useTransform(
     scrollY,
-    [0, windowHeight * 11], // hay que tomar en cuenta los primeros paños
-    [0, -windowHeight * 0.5],
+    [
+      0,
+      windowHeight,
+      windowHeight * 2,
+      windowHeight * 3,
+      windowHeight * 4,
+      windowHeight * 5,
+      windowHeight * 6,
+      windowHeight * 7,
+      windowHeight * 8,
+      windowHeight * 9,
+      windowHeight * 10,
+      windowHeight * 11,
+    ],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     { ease: easing.outQuad },
   )
 
-  const recuadroProgressScale = useTransform(
+  const recuadroYenY = useTransform(
     scrollY,
     [0, windowHeight * 10],
     [0.01, 1],
@@ -111,17 +125,18 @@ const Recuadro = ({ chapters }) => {
         }
       </Content>
 
-      <MarcoWrap>
+      {/* <MarcoWrap>
         <MarcoBg
           key="marco"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
           ref={recuadroRef}
-          // style={{ scale: recuadroProgressScale }}
-        >
+          style={{
+            x: recuadroXenY,
+            y: recuadroYenY,
+            // scale: recuadroScaleEnY,
+          }}>
           <Marco />
         </MarcoBg>
-      </MarcoWrap>
+      </MarcoWrap> */}
     </Container>
   )
 }
