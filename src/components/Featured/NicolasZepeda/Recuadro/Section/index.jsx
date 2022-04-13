@@ -38,7 +38,7 @@ const Section = ({
 
   const mockEpisode = {
     title: `${prefix}: ${title}`,
-    podcastTitle: `Habitación 109: El juicio de Nicolás Zepeda`,
+    podcastTitle: `Habitación 106: El juicio de Nicolás Zepeda`,
     enclosure: {
       url: `${audio ? audio : null}`,
       img: cover,
