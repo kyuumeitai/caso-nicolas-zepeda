@@ -180,6 +180,12 @@ const Player = () => {
     setIsActuallyPlaying(false)
   }
 
+  const onPlayError = () => {
+    playerRef.once('unlock', () => {
+      playerRef.play()
+    })
+  }
+
   const handleOnEnd = () => {}
 
   const handleSeekingChange = e => {
@@ -199,12 +205,6 @@ const Player = () => {
     }
     return () => cancelAnimationFrame(timer)
   }, [playing, isSeeking])
-
-  const onPlayError = () => {
-    playerRef.once('unlock', () => {
-      playerRef.play()
-    })
-  }
 
   if (!url) return null
   if (!playerInBottom) return null
@@ -259,10 +259,10 @@ const Player = () => {
               onEnd={() => handleOnEnd()}
               onStop={() => handleOnStop()}
               onPause={() => handleOnPause()}
-              onPlayError={() => onPlayError()}
-              onLoadError={() => onPlayError()}
+              onPlayError={onPlayError}
+              onLoadError={onPlayError}
               html5={true}
-              ref={ref => (playerRef.current = ref)}
+              ref={playerRef}
             />
             <Button
               aria-label="Play"

@@ -8,11 +8,9 @@ const Credits = () => (
       <h2 className=" font-actaDisplay">Créditos</h2>
 
       <p className="font-sans leading-tight">
-        Habitación 106 es un trabajo del Equipo de{' '}
-        <strong className="block">
-          Narrativas Digitales de La Tercera
-          <span className="font-normal ">.</span>
-        </strong>
+        Habitación 106 es un trabajo conjunto de la{' '}
+        <strong>Unidad de Investigación y Datos</strong> y el área de{' '}
+        <strong>Narrativas Interactivas de La Tercera</strong>
       </p>
 
       <p className="font-sans leading-tight">
