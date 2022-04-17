@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react'
 import styled from 'styled-components'
-import { easing } from '@/utilities/math'
+import { usePlayer } from '@/contexts/Player'
+
 import {
   useViewportScroll,
   motion,
@@ -31,6 +32,11 @@ const Content = styled(motion.div)`
 const SectionWrap = styled(motion.div)``
 
 const Recuadro = ({ chapters }) => {
+  const { setEpisodes } = usePlayer()
+  useEffect(() => {
+    console.log('chapters', chapters)
+    setEpisodes(chapters)
+  }, [chapters])
   return (
     <Container>
       <Content className="container mx-auto ">

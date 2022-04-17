@@ -107,7 +107,7 @@ export default createGlobalStyle`
 
   .gatsby-image-wrapper {
   > img {
-    /* filter: blur(30px); */
+    filter: blur(30px);
   }
 }
 `

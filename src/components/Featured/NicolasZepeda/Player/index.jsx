@@ -4,6 +4,7 @@ import ReactHowler from 'react-howler'
 import styled, { keyframes } from 'styled-components'
 import durationFormatter from '@/utilities/formatter'
 import { Play, Pause, Backwards, Forwards, Loading } from './Buttons'
+import Playlist from './Playlist'
 
 import {
   ButtonGroup,
@@ -211,6 +212,7 @@ const Player = () => {
 
   return (
     <Wrap className="fixed bottom-0 left-0 right-0 z-10">
+      <Playlist />
       <Inner>
         <Artwork>
           <div className="wrapper">

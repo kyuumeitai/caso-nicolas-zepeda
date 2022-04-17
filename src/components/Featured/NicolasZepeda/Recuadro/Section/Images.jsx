@@ -16,7 +16,11 @@ const Images = ({ which }) => {
         nodes {
           name
           childImageSharp {
-            gatsbyImageData(width: 400, formats: [WEBP, AVIF])
+            gatsbyImageData(
+              width: 400
+              placeholder: BLURRED
+              formats: [WEBP, AVIF]
+            )
           }
         }
       }
