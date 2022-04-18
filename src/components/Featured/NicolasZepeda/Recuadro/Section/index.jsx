@@ -12,7 +12,7 @@ const Wrap = styled.div`
   position: relative;
   .firstcol {
     position: sticky;
-    top: 50%;
+    top: 20%;
     /* border: 1px solid tomato; */
     @media (max-width: 768px) {
       top: 80px;
@@ -92,7 +92,7 @@ const Section = ({
   return (
     <UberWrap>
       <Wrap>
-        <div className="firstcol container px-2 mx-auto sm:px-4 lg:px-20">
+        <div className="container px-2 mx-auto firstcol sm:px-4 lg:px-20">
           <h2 className="mb-4 font-actaDisplay ">
             <small className="block font-sans text-base font-bold tracking-wide ">
               {prefix}

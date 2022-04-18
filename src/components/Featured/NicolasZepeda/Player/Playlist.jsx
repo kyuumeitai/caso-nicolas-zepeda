@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import { usePlayer } from '@/contexts/Player'
 import styled from 'styled-components'
 import cover from '@/images/habitacion-106-podcast-lt.jpg'
+import {
+  disablePageScroll,
+  enablePageScroll,
+} from 'scroll-lock/dist/scroll-lock'
 
 const StPlaylist = styled.div`
   /* background-color: rgba(255, 255, 255, 0.1); */
@@ -17,8 +21,8 @@ const StPlaylist = styled.div`
 
   .playlist-header {
     position: absolute;
-    bottom: 100px;
-    right: 10px;
+    bottom: 5px;
+    right: 8px;
     .playlist-header__button {
       background-color: rgba(255, 255, 255, 0.1);
       padding: 2px 4px;
@@ -131,7 +135,18 @@ const StEpisode = styled.button`
 
 const Playlist = () => {
   const { episodes, showPlaylist, setShowPlaylist } = usePlayer()
+  const ref = useRef()
+
+  useEffect(() => {
+    if (showPlaylist) {
+      disablePageScroll()
+    } else {
+      enablePageScroll()
+    }
+  }, [showPlaylist])
+
   if (!episodes || !episodes.length) return null
+
   return (
     <StPlaylist
       className={showPlaylist ? ' playlist-active' : 'playlist-hidden'}>

@@ -54,6 +54,9 @@ const Inner = styled.div`
   display: grid;
   grid-template-columns: 120px 1fr;
   column-gap: 20px;
+  @media (max-width: 768px) {
+    column-gap: 10px;
+  }
 `
 
 const ProgressContainer = styled.div`
@@ -73,7 +76,30 @@ const ProgressContainer = styled.div`
   }
 `
 
-const Metadata = styled.div``
+const Metadata = styled.div`
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin-bottom: 4px;
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  h4 {
+    font-size: 0.875rem;
+    line-height: 1;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+`
 
 const Controls = styled.div``
 
@@ -222,8 +248,8 @@ const Player = () => {
         </Artwork>
         <Controls>
           <Metadata>
-            <h3 className="text-xl font-bold tracking-tight ">{title}</h3>
-            <h4 className="text-sm">{podcastTitle}</h4>
+            <h3>{title}</h3>
+            <h4>{podcastTitle}</h4>
           </Metadata>
           <Buttons>
             <ProgressWrapper>
