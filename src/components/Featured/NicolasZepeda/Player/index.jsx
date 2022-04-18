@@ -166,13 +166,13 @@ const Player = () => {
   const [duration, setDuration] = useState(0)
   const [seek, setSeek] = useState(0.0)
   const [playing, setPlaying] = useState(false)
-  const [isActuallyPlaying, setIsActuallyPlaying] = useState(false)
   const [paused, setPaused] = useState(false)
   const [isSeeking, setIsSeeking] = useState(false)
 
   const playerRef = useRef()
 
-  const { episode, setPlayerInBottom, playerInBottom } = usePlayer()
+  const { episode, setPlayerInBottom, setIsPlaying, playerInBottom } =
+    usePlayer()
   const { title, podcastTitle, enclosure } = episode
 
   useEffect(() => {
@@ -192,19 +192,17 @@ const Player = () => {
   const handleOnPlay = bla => {
     console.log('on play', bla)
     setPlaying(true)
-    setIsActuallyPlaying(true)
+    setIsPlaying(true)
   }
 
   const handleOnStop = () => {
     console.log('click stop')
     setPaused(true)
-    setIsActuallyPlaying(false)
   }
 
   const handleOnPause = () => {
     console.log('click pause')
     setPaused(true)
-    setIsActuallyPlaying(false)
   }
 
   const onPlayError = () => {

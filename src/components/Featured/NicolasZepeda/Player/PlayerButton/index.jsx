@@ -35,8 +35,7 @@ const TranscriptionButton = styled.button`
 `
 
 const PlayerButton = ({ episode, transcription }) => {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const { setEpisode } = usePlayer()
+  const { setEpisode, isPlaying, setIsPlaying } = usePlayer()
 
   const handlePlay = () => {
     setIsPlaying(true)
