@@ -5,15 +5,18 @@ import cover from '@/images/habitacion-106-podcast-lt.jpg'
 import { remark } from 'remark'
 import recommended from 'remark-preset-lint-recommended'
 import remarkHtml from 'remark-html'
+import Images from './Images'
 
 const Wrap = styled.div`
-  max-width: 40%;
   text-align: left;
-  min-height: 90vh;
-  display: flex;
-  align-items: center;
-  @media (max-width: 768px) {
-    max-width: 100%;
+  position: relative;
+  .firstcol {
+    position: sticky;
+    top: 50%;
+    /* border: 1px solid tomato; */
+    @media (max-width: 768px) {
+      top: 80px;
+    }
   }
   h2 {
     font-size: 3.75rem;
@@ -21,6 +24,30 @@ const Wrap = styled.div`
     @media (max-width: 768px) {
       font-size: 3rem;
     }
+  }
+`
+
+const UberWrap = styled.div`
+  /* border: 1px solid #0f0; */
+  min-height: 130vh;
+  margin-bottom: 30vh;
+  display: grid;
+
+  grid-template-columns: 40% 1fr;
+  position: relative;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const ImageWrap = styled.div`
+  min-height: 100vh;
+  /* border: 1px solid #f0f; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 768px) {
+    min-height: 0;
   }
 `
 
@@ -33,6 +60,7 @@ const Section = ({
   episode,
   audio,
   audiointro,
+  chapindex,
 }) => {
   const [parsedHtml, setParsedHtml] = useState(null)
 
@@ -44,8 +72,6 @@ const Section = ({
       img: cover,
     },
   }
-
-  //function for add extra line breaks to string
 
   useEffect(() => {
     if (script) {
@@ -64,22 +90,27 @@ const Section = ({
   }, [script])
 
   return (
-    <Wrap>
-      <div className="container h-16 px-2 mx-auto sm:px-4 lg:px-20">
-        <h2 className="mb-4 font-actaDisplay ">
-          <small className="block font-sans text-base font-bold tracking-wide ">
-            {prefix}
-          </small>
-          {title}
-        </h2>
-        <div
-          className="mb-4"
-          dangerouslySetInnerHTML={{ __html: description }}></div>
-        <div>
-          <PlayerButton episode={mockEpisode} transcription={parsedHtml} />
+    <UberWrap>
+      <Wrap>
+        <div className="firstcol container px-2 mx-auto sm:px-4 lg:px-20">
+          <h2 className="mb-4 font-actaDisplay ">
+            <small className="block font-sans text-base font-bold tracking-wide ">
+              {prefix}
+            </small>
+            {title}
+          </h2>
+          <div
+            className="mb-4"
+            dangerouslySetInnerHTML={{ __html: description }}></div>
+          <div>
+            <PlayerButton episode={mockEpisode} transcription={parsedHtml} />
+          </div>
         </div>
-      </div>
-    </Wrap>
+      </Wrap>
+      <ImageWrap>
+        <Images which={chapindex + 1} />
+      </ImageWrap>
+    </UberWrap>
   )
 }
 

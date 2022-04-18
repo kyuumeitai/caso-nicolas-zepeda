@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-tailwindcss`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
