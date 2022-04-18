@@ -25,7 +25,7 @@ const StPlaylist = styled.div`
     right: 8px;
     .playlist-header__button {
       background-color: rgba(255, 255, 255, 0.1);
-      padding: 2px 4px;
+      padding: 4px 6px;
       margin-bottom: 5px;
       border-radius: 6px;
       transition: background-color 0.2s ease-in-out;
