@@ -19,11 +19,12 @@ import Section from './Section'
 
 const Container = styled.div`
   position: relative;
-  z-index: 3;
+  z-index: 8;
   background-color: white;
   width: 100%;
   min-height: 100vh;
   color: black;
+  transform: translate3d(0, 0, 0);
 `
 
 const Screen = styled.div`
