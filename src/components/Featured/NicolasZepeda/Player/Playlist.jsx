@@ -152,7 +152,7 @@ const Playlist = () => {
       className={showPlaylist ? ' playlist-active' : 'playlist-hidden'}>
       <div className="chapters">
         {episodes.map((episode, index) => (
-          <Episode key={index} episode={episode} />
+          <Episode key={index} index={index} episode={episode} />
         ))}
       </div>
       <div className="playlist-header">
@@ -191,9 +191,10 @@ const Playlist = () => {
   )
 }
 
-const Episode = ({ episode }) => {
+const Episode = ({ episode, index }) => {
   const { audio, length, prefix, title, description } = episode
-  const { setEpisode, setShowPlaylist } = usePlayer()
+  const { setEpisode, setShowPlaylist, activeEpisode, setActiveEpisode } =
+    usePlayer()
 
   const handleClick = () => {
     const mockEpisode = {
@@ -206,6 +207,7 @@ const Episode = ({ episode }) => {
       },
     }
     setEpisode(mockEpisode)
+    setActiveEpisode(index)
     setShowPlaylist(false)
   }
   return (
