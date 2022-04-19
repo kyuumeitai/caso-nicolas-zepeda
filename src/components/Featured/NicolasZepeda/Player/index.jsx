@@ -4,7 +4,7 @@ import ReactHowler from 'react-howler'
 import styled, { keyframes } from 'styled-components'
 import durationFormatter from '@/utilities/formatter'
 import { Play, Pause, Backwards, Forwards, Loading } from './Buttons'
-import cover from '@/images/habitacion-106-podcast-lt.jpg'
+import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
 
 import Playlist from './Playlist'
 

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import { usePlayer } from '@/contexts/Player'
 import styled from 'styled-components'
-import cover from '@/images/habitacion-106-podcast-lt.jpg'
+import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
+
 import {
   disablePageScroll,
   enablePageScroll,

@@ -35,7 +35,7 @@ const SectionWrap = styled(motion.div)``
 const Recuadro = ({ chapters }) => {
   const { setEpisodes, activeEpisode } = usePlayer()
   useEffect(() => {
-    console.log('chapters', chapters)
+    // console.log('chapters', chapters)
     setEpisodes(chapters)
   }, [chapters])
 
@@ -44,9 +44,9 @@ const Recuadro = ({ chapters }) => {
   )
 
   useEffect(() => {
-    console.log('active', activeEpisode)
+    // console.log('active', activeEpisode)
     if (activeEpisode || activeEpisode === 0) {
-      console.log(refs.current[activeEpisode])
+      // console.log(refs.current[activeEpisode])
       refs.current[activeEpisode].current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',

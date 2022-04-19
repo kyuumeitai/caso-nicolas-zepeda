@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import PlayerButton from '@/components/Featured/NicolasZepeda/Player/PlayerButton'
-import cover from '@/images/habitacion-106-podcast-lt.jpg'
+import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
+
 import { remark } from 'remark'
 import recommended from 'remark-preset-lint-recommended'
 import remarkHtml from 'remark-html'
