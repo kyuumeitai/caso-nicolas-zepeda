@@ -86,11 +86,16 @@ const StEpisode = styled.button`
   border: 1px 0;
   cursor: pointer;
   outline: none;
+  color: rgba(255, 255, 250, 0.95);
+
   &:last-child {
     border-bottom: none;
   }
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
+  }
+  &.thisEpisodeIsPlaying {
+    color: tomato;
   }
   .tracklist-mask {
     overflow: hidden;
@@ -109,7 +114,7 @@ const StEpisode = styled.button`
       width: inherit;
       height: inherit;
       display: block;
-      fill: rgba(255, 255, 250, 0.95);
+      fill: currentColor;
     }
   }
   .tracklist-title {
@@ -120,7 +125,6 @@ const StEpisode = styled.button`
     grid-template-columns: 1fr auto;
     flex: 0 0 100%;
     column-gap: 14px;
-    color: rgba(255, 255, 250, 0.95);
     text-align: start;
     .tracklist-title__text {
       display: -webkit-box;
@@ -140,7 +144,7 @@ const StEpisode = styled.button`
 `
 
 const Playlist = () => {
-  const { episodes, showPlaylist, setShowPlaylist } = usePlayer()
+  const { episodes, showPlaylist, setShowPlaylist, activeEpisode } = usePlayer()
   const ref = useRef()
 
   useEffect(() => {
@@ -220,7 +224,8 @@ const Episode = ({ episode, index }) => {
     <StEpisode
       onClick={() => handleClick()}
       role="listitem"
-      title={`${prefix} | ${title}`}>
+      title={`${prefix} | ${title}`}
+      className={index === activeEpisode ? 'thisEpisodeIsPlaying' : null}>
       <div className="tracklist-metadata">
         <div className="tracklist-mask">
           <div className="tracklist-info">
