@@ -4,6 +4,8 @@ import ReactHowler from 'react-howler'
 import styled, { keyframes } from 'styled-components'
 import durationFormatter from '@/utilities/formatter'
 import { Play, Pause, Backwards, Forwards, Loading } from './Buttons'
+import cover from '@/images/habitacion-106-podcast-lt.jpg'
+
 import Playlist from './Playlist'
 
 import {
@@ -173,6 +175,10 @@ const Player = () => {
 
   const {
     episode,
+    episodes,
+    setEpisode,
+    activeEpisode,
+    setActiveEpisode,
     setPlayerInBottom,
     setIsPlaying,
     playerInBottom,
@@ -186,6 +192,26 @@ const Player = () => {
     setPlaying(true)
     setPlayerInBottom(true)
   }, [episode])
+
+  const nextChapter = () => {
+    if (activeEpisode + 1 < episodes.length) {
+      const nextEpisode = episodes[activeEpisode + 1]
+      const { audio, length, prefix, title } = nextEpisode
+      const mockEpisode = {
+        title: `${prefix}: ${title}`,
+        podcastTitle: `Habitación 106: El juicio de Nicolás Zepeda`,
+        enclosure: {
+          url: `${audio ? audio : null}`,
+          img: cover,
+          length: length,
+        },
+      }
+      setEpisode(mockEpisode)
+      setActiveEpisode(activeEpisode + 1)
+    } else {
+      setPlaying(false)
+    }
+  }
 
   const handleOnLoad = () => {
     const soundDuration = playerRef.current?.duration()
@@ -219,7 +245,9 @@ const Player = () => {
     })
   }
 
-  const handleOnEnd = () => {}
+  const handleOnEnd = () => {
+    nextChapter()
+  }
 
   const handleSeekingChange = e => {
     setSeek(parseFloat(`${e[0]}`))
@@ -304,6 +332,7 @@ const Player = () => {
               onPlayError={onPlayError}
               onLoadError={onPlayError}
               html5={true}
+              loop={false}
               ref={playerRef}
             />
             <Button
