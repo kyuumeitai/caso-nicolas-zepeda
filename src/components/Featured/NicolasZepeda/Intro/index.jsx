@@ -40,6 +40,7 @@ const Content = styled(motion.div)`
 
 const RadialGradient = styled(motion.div)`
   position: fixed;
+  z-index: -1;
   height: 400vh;
   top: -100vh;
   left: 0vw;
