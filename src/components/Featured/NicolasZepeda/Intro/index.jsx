@@ -228,7 +228,7 @@ const Intro = ({ title, description }) => {
   return (
     <div className="relative z-0 ">
       <AnimatePresence>
-        <RadialGradient
+        {/* <RadialGradient
           key="radial-gradient"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -238,8 +238,8 @@ const Intro = ({ title, description }) => {
             scale: gradientProgressScale,
             y: gradientProgressY,
           }}
-        />
-        <Container
+        /> */}
+        {/* <Container
           key="container"
           ref={containerRef}
           style={{ height: `${height * 100}vh` }}>
@@ -265,8 +265,8 @@ const Intro = ({ title, description }) => {
               </ContentWrapper>
             </Content>
           </Screen>
-        </Container>
-        <VectorWrap key="vector-wrap">
+        </Container> */}
+        {/* <VectorWrap key="vector-wrap">
           <ZepedaSvg
             ref={zepedaRef}
             exit={{ opacity: 0 }}
@@ -277,7 +277,7 @@ const Intro = ({ title, description }) => {
             }}>
             <IntroSvg />
           </ZepedaSvg>
-        </VectorWrap>
+        </VectorWrap> */}
       </AnimatePresence>
     </div>
   )
