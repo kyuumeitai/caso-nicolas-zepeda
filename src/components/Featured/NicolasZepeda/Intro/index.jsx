@@ -239,7 +239,7 @@ const Intro = ({ title, description }) => {
             y: gradientProgressY,
           }}
         /> */}
-        {/* <Container
+        <Container
           key="container"
           ref={containerRef}
           style={{ height: `${height * 100}vh` }}>
@@ -265,7 +265,7 @@ const Intro = ({ title, description }) => {
               </ContentWrapper>
             </Content>
           </Screen>
-        </Container> */}
+        </Container>
         {/* <VectorWrap key="vector-wrap">
           <ZepedaSvg
             ref={zepedaRef}
