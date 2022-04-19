@@ -222,19 +222,19 @@ const Player = () => {
   }
 
   const handleOnPlay = bla => {
-    console.log('on play', bla)
+    // console.log('on play', bla)
     setPlaying(true)
     setIsPlaying(true)
     setGlobalPause(false)
   }
 
   const handleOnStop = () => {
-    console.log('click stop')
+    // console.log('click stop')
     setPaused(true)
   }
 
   const handleOnPause = () => {
-    console.log('click pause')
+    // console.log('click pause')
     setPaused(true)
     setGlobalPause(true)
   }
@@ -268,7 +268,6 @@ const Player = () => {
   }, [playing, isSeeking])
 
   useEffect(() => {
-    console.log('globalPause global useefect', globalPause)
     if (globalPause && playing) {
       setPlaying(false)
       setPaused(true)
