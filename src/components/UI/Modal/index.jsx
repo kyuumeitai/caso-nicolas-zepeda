@@ -17,8 +17,7 @@ const ModalContainer = styled(motion.div)`
   z-index: 100;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
+
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: saturate(200%) blur(5px);
 `
@@ -88,7 +87,9 @@ const Meta = styled.div`
 `
 
 const BodyContent = styled.div`
-  // lo que sea que va en el body
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
 `
 
 const ContentContainer = styled.div`
@@ -153,7 +154,6 @@ const ModalComponent = () => {
     <AnimatePresence exitBeforeEnter>
       {active ? (
         <ModalContainer
-          ref={ref}
           initial="exit"
           animate="enter"
           exit="exit"
@@ -167,7 +167,7 @@ const ModalComponent = () => {
             <TitleContainer
               dangerouslySetInnerHTML={{ __html: title }}></TitleContainer>
             <ContentContainer>
-              <BodyContent>
+              <BodyContent ref={ref}>
                 <div dangerouslySetInnerHTML={{ __html: content }}></div>
               </BodyContent>
             </ContentContainer>

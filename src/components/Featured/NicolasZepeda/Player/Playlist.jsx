@@ -8,63 +8,61 @@ import {
   enablePageScroll,
 } from 'scroll-lock/dist/scroll-lock'
 
+const StPlaylistButton = styled.div`
+  position: fixed;
+  bottom: 10px;
+  right: 8px;
+  z-index: 3;
+  .playlist-header__button {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 4px 6px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease-in-out;
+    border: 1px solid tomato;
+    color: white;
+    &:hover {
+      background-color: tomato;
+      background-color: rgba(255, 255, 255, 0.4);
+    }
+
+    .playlist-header__button__inner {
+      display: flex;
+      align-items: center;
+    }
+    .playlist-header__button__text {
+      font-size: 15px;
+      line-height: 1.3333833333;
+      letter-spacing: 0;
+    }
+    .playlist-header__button__icon {
+      margin-left: 5px;
+      position: relative;
+      bottom: -3px;
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+`
+
 const StPlaylist = styled.div`
-  position: relative;
   z-index: 10;
+  border-radius: 6px 6px 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: saturate(200%) blur(10px);
   &.playlist-active {
   }
   &.playlist-hidden {
   }
-
   .chapters {
-    /* background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: saturate(200%) blur(10px); */
-    height: 100%;
-    border-radius: 6px 6px 0 0;
-    background-color: #343333;
   }
 
-  .playlist-header {
-    position: fixed;
-    bottom: 10px;
-    right: 8px;
-    .playlist-header__button {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 4px 6px;
-      margin-bottom: 5px;
-      border-radius: 6px;
-      transition: background-color 0.2s ease-in-out;
-      border: 1px solid tomato;
-      color: white;
-      &:hover {
-        background-color: tomato;
-        background-color: rgba(255, 255, 255, 0.4);
-      }
-
-      .playlist-header__button__inner {
-        display: flex;
-        align-items: center;
-      }
-      .playlist-header__button__text {
-        font-size: 15px;
-        line-height: 1.3333833333;
-        letter-spacing: 0;
-      }
-      .playlist-header__button__icon {
-        margin-left: 5px;
-        position: relative;
-        bottom: -3px;
-        transition: transform 0.2s ease-in-out;
-      }
-    }
-  }
   .chapters {
     /* transition: height 0.2s ease-in-out; */
   }
   &.playlist-active {
+    overflow-x: hidden;
+    overflow-y: auto;
     .chapters {
-      overflow-x: hidden;
-      overflow-y: auto;
       height: calc(100vh - 260px);
     }
     .playlist-header__button {
@@ -174,15 +172,8 @@ const Playlist = () => {
   if (!episodes || !episodes.length) return null
 
   return (
-    <StPlaylist
-      ref={ref}
-      className={showPlaylist ? ' playlist-active' : 'playlist-hidden'}>
-      <div className="chapters">
-        {episodes.map((episode, index) => (
-          <Episode key={index} index={index} episode={episode} />
-        ))}
-      </div>
-      <div className="playlist-header">
+    <>
+      <StPlaylistButton>
         <button
           className="playlist-header__button"
           onClick={() => setShowPlaylist(!showPlaylist)}>
@@ -213,8 +204,17 @@ const Playlist = () => {
             </span>
           </div>
         </button>
-      </div>
-    </StPlaylist>
+      </StPlaylistButton>
+      <StPlaylist
+        ref={ref}
+        className={showPlaylist ? ' playlist-active' : 'playlist-hidden'}>
+        <div className="chapters">
+          {episodes.map((episode, index) => (
+            <Episode key={index} index={index} episode={episode} />
+          ))}
+        </div>
+      </StPlaylist>
+    </>
   )
 }
 
