@@ -21,7 +21,7 @@ const StPlaylist = styled.div`
 
   .playlist-header {
     position: absolute;
-    bottom: 5px;
+    bottom: 10px;
     right: 8px;
     .playlist-header__button {
       background-color: rgba(255, 255, 255, 0.1);
@@ -29,13 +29,19 @@ const StPlaylist = styled.div`
       margin-bottom: 5px;
       border-radius: 6px;
       transition: background-color 0.2s ease-in-out;
+      border: 1px solid tomato;
+      &:hover {
+        background-color: tomato;
+      }
 
       .playlist-header__button__inner {
         display: flex;
         align-items: center;
       }
       .playlist-header__button__text {
-        font-size: 13px;
+        font-size: 15px;
+        line-height: 1.3333833333;
+        letter-spacing: 0;
       }
       .playlist-header__button__icon {
         margin-left: 5px;
@@ -52,7 +58,7 @@ const StPlaylist = styled.div`
     .chapters {
       overflow-x: hidden;
       overflow-y: auto;
-      height: calc(100vh - 64px - 140px - 20px);
+      height: calc(100vh - 64px - 140px - 20px - 20px);
     }
     .playlist-header__button {
       background-color: tomato;

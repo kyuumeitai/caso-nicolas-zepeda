@@ -546,7 +546,7 @@ A minutos del veredicto, otra vez entre lágrimas, Zepeda se paró delante de to
       `,
     },
     {
-      prefix: `Epílogo.`,
+      prefix: `Epílogo`,
       audio:
         'https://interactivo.latercera.com/zepeda-assets/v2/EPILOGO%20CON%20MUSICA%20FINAL.mp3',
       length: '2:36',
