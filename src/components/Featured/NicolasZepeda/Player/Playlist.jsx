@@ -17,10 +17,12 @@ const StPlaylist = styled.div`
   }
 
   .chapters {
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: saturate(200%) blur(10px);
+    /* background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(200%) blur(10px); */
     border-radius: 6px 6px 0 0;
+    background-color: #343333;
+    position: relative;
+    z-index: 3;
   }
 
   .playlist-header {
@@ -58,13 +60,13 @@ const StPlaylist = styled.div`
     }
   }
   .chapters {
-    transition: height 0.2s ease-in-out;
+    /* transition: height 0.2s ease-in-out; */
   }
   &.playlist-active {
     .chapters {
       overflow-x: hidden;
       overflow-y: auto;
-      height: calc(100vh - 240px);
+      height: 60vh;
     }
     .playlist-header__button {
       background-color: tomato;

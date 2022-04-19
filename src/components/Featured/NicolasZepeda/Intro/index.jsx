@@ -226,13 +226,14 @@ const Intro = ({ title, description }) => {
   }
 
   return (
-    <>
+    <div className="relative z-0 ">
       <AnimatePresence>
         <RadialGradient
           key="radial-gradient"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.7 }}
+          exit={{ opacity: 0 }}
           style={{
             scale: gradientProgressScale,
             y: gradientProgressY,
@@ -268,6 +269,7 @@ const Intro = ({ title, description }) => {
         <VectorWrap key="vector-wrap">
           <ZepedaSvg
             ref={zepedaRef}
+            exit={{ opacity: 0 }}
             style={{
               opacity: fallingZepedaOpacity,
               y: fallingZepedaProgressY,
@@ -277,7 +279,7 @@ const Intro = ({ title, description }) => {
           </ZepedaSvg>
         </VectorWrap>
       </AnimatePresence>
-    </>
+    </div>
   )
 }
 
