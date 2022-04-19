@@ -41,10 +41,10 @@ const Content = styled(motion.div)`
 const RadialGradient = styled(motion.div)`
   position: fixed;
   z-index: -1;
-  height: 400vh;
-  top: -100vh;
-  left: 0vw;
-  right: 0vw;
+  height: 400%;
+  top: -100%;
+  left: 0;
+  right: 0;
   pointer-events: none;
   background-image: radial-gradient(
     50% 50% at 50% 50%,
