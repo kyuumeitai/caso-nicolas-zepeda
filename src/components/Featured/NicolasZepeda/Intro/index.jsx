@@ -226,9 +226,9 @@ const Intro = ({ title, description }) => {
   }
 
   return (
-    <div className="relative z-0 ">
+    <div className="relative z-0">
       <AnimatePresence>
-        {/* <RadialGradient
+        <RadialGradient
           key="radial-gradient"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -238,7 +238,7 @@ const Intro = ({ title, description }) => {
             scale: gradientProgressScale,
             y: gradientProgressY,
           }}
-        /> */}
+        />
         <Container
           key="container"
           ref={containerRef}
