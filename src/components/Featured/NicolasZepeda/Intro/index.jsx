@@ -40,7 +40,6 @@ const Content = styled(motion.div)`
 
 const RadialGradient = styled(motion.div)`
   position: fixed;
-  z-index: 2;
   height: 400vh;
   top: -100vh;
   left: 0vw;
@@ -228,17 +227,17 @@ const Intro = ({ title, description }) => {
   return (
     <div className="relative z-0">
       <AnimatePresence>
-        {/* <RadialGradient
+        <RadialGradient
           key="radial-gradient"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.7 }}
-          exit={{ opacity: 0 }}
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1 }}
+          // transition={{ duration: 1.7 }}
+          // exit={{ opacity: 0 }}
           style={{
             scale: gradientProgressScale,
             y: gradientProgressY,
           }}
-        /> */}
+        />
         <Container
           key="container"
           ref={containerRef}
