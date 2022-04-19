@@ -34,12 +34,21 @@ const TranscriptionButton = styled.button`
   cursor: pointer;
 `
 
-const PlayerButton = ({ episode, transcription }) => {
-  const { setEpisode, isPlaying, setIsPlaying } = usePlayer()
+const PlayerButton = ({ episode, transcription, which }) => {
+  const {
+    setEpisode,
+    isPlaying,
+    setIsPlaying,
+    activeEpisode,
+    setActiveEpisode,
+    globalPause,
+    setGlobalPause,
+  } = usePlayer()
 
   const handlePlay = () => {
     setIsPlaying(true)
     setEpisode(episode)
+    setActiveEpisode(which)
   }
 
   const { setActive, setContent, setTitle } = useModal()
@@ -56,14 +65,27 @@ const PlayerButton = ({ episode, transcription }) => {
     }
   }
 
+  const handlePause = () => {
+    setGlobalPause(true)
+  }
+
   return (
     <Wrap>
-      <PlayButton onClick={() => handlePlay()}>
-        {isPlaying ? <Pause /> : <Play />}
+      <PlayButton
+        onClick={() => {
+          if (which === activeEpisode && !globalPause) {
+            handlePause()
+          } else {
+            handlePlay()
+          }
+        }}>
+        {which === activeEpisode && !globalPause ? <Pause /> : <Play />}
       </PlayButton>
       <div>
         <ListenButton onClick={() => handlePlay()}>
-          <span className="font-bold hover:underline">Escuchar</span>
+          {which !== activeEpisode && (
+            <span className="font-bold hover:underline">Escuchar</span>
+          )}
           <span className="text-xs text-gray-800 "> 4 min </span>{' '}
         </ListenButton>
         <span className="text-xs text-gray-600"> |</span>{' '}

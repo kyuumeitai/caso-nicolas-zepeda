@@ -166,13 +166,19 @@ const Player = () => {
   const [duration, setDuration] = useState(0)
   const [seek, setSeek] = useState(0.0)
   const [playing, setPlaying] = useState(false)
-  const [paused, setPaused] = useState(false)
   const [isSeeking, setIsSeeking] = useState(false)
+  const [paused, setPaused] = useState(false)
 
   const playerRef = useRef()
 
-  const { episode, setPlayerInBottom, setIsPlaying, playerInBottom } =
-    usePlayer()
+  const {
+    episode,
+    setPlayerInBottom,
+    setIsPlaying,
+    playerInBottom,
+    setGlobalPause,
+    globalPause,
+  } = usePlayer()
   const { title, podcastTitle, enclosure } = episode
 
   useEffect(() => {
@@ -193,6 +199,7 @@ const Player = () => {
     console.log('on play', bla)
     setPlaying(true)
     setIsPlaying(true)
+    setGlobalPause(false)
   }
 
   const handleOnStop = () => {
@@ -203,6 +210,7 @@ const Player = () => {
   const handleOnPause = () => {
     console.log('click pause')
     setPaused(true)
+    setGlobalPause(true)
   }
 
   const onPlayError = () => {
@@ -230,6 +238,14 @@ const Player = () => {
     }
     return () => cancelAnimationFrame(timer)
   }, [playing, isSeeking])
+
+  useEffect(() => {
+    console.log('globalPause global useefect', globalPause)
+    if (globalPause && playing) {
+      setPlaying(false)
+      setPaused(true)
+    }
+  }, [globalPause])
 
   if (!url) return null
   if (!playerInBottom) return null

@@ -16,6 +16,7 @@ export const PlayerProvider = props => {
   const [episodes, setEpisodes] = useState([])
   const [showPlaylist, setShowPlaylist] = useState(false)
   const [activeEpisode, setActiveEpisode] = useState(false)
+  const [globalPause, setGlobalPause] = useState(null)
   return (
     <Provider
       value={{
@@ -33,6 +34,8 @@ export const PlayerProvider = props => {
         setShowPlaylist,
         activeEpisode,
         setActiveEpisode,
+        globalPause,
+        setGlobalPause,
       }}
       {...props}
     />

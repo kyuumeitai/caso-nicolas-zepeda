@@ -103,7 +103,11 @@ const Section = ({
             className="mb-4"
             dangerouslySetInnerHTML={{ __html: description }}></div>
           <div>
-            <PlayerButton episode={mockEpisode} transcription={parsedHtml} />
+            <PlayerButton
+              which={chapindex}
+              episode={mockEpisode}
+              transcription={parsedHtml}
+            />
           </div>
         </div>
       </Wrap>
