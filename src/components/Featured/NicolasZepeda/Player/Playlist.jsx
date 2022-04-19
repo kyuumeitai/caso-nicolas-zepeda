@@ -9,8 +9,8 @@ import {
 } from 'scroll-lock/dist/scroll-lock'
 
 const StPlaylist = styled.div`
-  /* background-color: rgba(255, 255, 255, 0.1); */
-
+  position: relative;
+  z-index: 2;
   &.playlist-active {
   }
   &.playlist-hidden {
@@ -18,10 +18,13 @@ const StPlaylist = styled.div`
 
   .chapters {
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: saturate(200%) blur(10px);
+    border-radius: 6px 6px 0 0;
   }
 
   .playlist-header {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 8px;
     .playlist-header__button {
@@ -31,8 +34,10 @@ const StPlaylist = styled.div`
       border-radius: 6px;
       transition: background-color 0.2s ease-in-out;
       border: 1px solid tomato;
+      color: white;
       &:hover {
         background-color: tomato;
+        background-color: rgba(255, 255, 255, 0.4);
       }
 
       .playlist-header__button__inner {
@@ -59,10 +64,11 @@ const StPlaylist = styled.div`
     .chapters {
       overflow-x: hidden;
       overflow-y: auto;
-      height: calc(100vh - 64px - 140px - 20px - 20px);
+      height: calc(100vh - 240px);
     }
     .playlist-header__button {
       background-color: tomato;
+
       .playlist-header__button__icon {
         bottom: 3px;
         transform: rotate(180deg);
@@ -97,6 +103,7 @@ const StEpisode = styled.button`
   }
   &.thisEpisodeIsPlaying {
     color: tomato;
+    background-color: rgba(255, 255, 255, 0.8);
   }
   .tracklist-mask {
     overflow: hidden;

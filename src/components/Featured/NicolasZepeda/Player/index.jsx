@@ -65,6 +65,7 @@ const ProgressContainer = styled.div`
   width: 100%;
   height: 10px;
   margin: 10px 0;
+  overflow: hidden;
   .chakra-slider {
     height: 6px;
     background-color: #444;
@@ -278,78 +279,80 @@ const Player = () => {
   if (!playerInBottom) return null
 
   return (
-    <Wrap className="fixed bottom-0 left-0 right-0 z-10">
+    <div className="fixed bottom-0 left-0 right-0 z-10">
       <Playlist />
-      <Inner>
-        <Artwork>
-          <div className="wrapper">
-            <svg viewBox="0 0 1 1" aria-hidden="true"></svg>
-            <img className="foreground" src={enclosure.img} alt={title}></img>
-          </div>
-        </Artwork>
-        <Controls>
-          <Metadata>
-            <h3>{title}</h3>
-            <h4>{podcastTitle}</h4>
-          </Metadata>
-          <Buttons>
-            <ProgressWrapper>
-              <small className="time-passed">
-                {seek && durationFormatter(seek)}
-              </small>
-              <ProgressContainer>
-                <RangeSlider
-                  aria-label={['min', 'max']}
-                  step={0.1}
-                  min={0}
-                  max={duration ? duration.toFixed() : 0}
-                  onChange={handleSeekingChange}
-                  value={[seek]}
-                  onChangeStart={() => {
-                    setIsSeeking(true)
-                  }}
-                  onChangeEnd={() => {
-                    setIsSeeking(false)
-                  }}>
-                  <RangeSliderTrack>
-                    <RangeSliderFilledTrack id="rangeSlider"></RangeSliderFilledTrack>
-                  </RangeSliderTrack>
-                </RangeSlider>
-              </ProgressContainer>
-              <small className="time-left">
-                {duration && durationFormatter(duration)}
-              </small>
-            </ProgressWrapper>
-            <ReactHowler
-              src={[url]}
-              playing={playing}
-              onLoad={() => handleOnLoad()}
-              onPlay={() => handleOnPlay()}
-              onEnd={() => handleOnEnd()}
-              onStop={() => handleOnStop()}
-              onPause={() => handleOnPause()}
-              onPlayError={onPlayError}
-              onLoadError={onPlayError}
-              html5={true}
-              loop={false}
-              ref={playerRef}
-            />
-            <Button
-              aria-label="Play"
-              onClick={() => setPlaying(!playing)}
-              className={loaded ? null : 'loading'}>
-              {playing ? <>{loaded ? <Pause /> : <Loading />}</> : <Play />}
-            </Button>
-            {/* <Button aria-label="Backwards" onClick={() => setPlaying(false)}>
+      <Wrap>
+        <Inner>
+          <Artwork>
+            <div className="wrapper">
+              <svg viewBox="0 0 1 1" aria-hidden="true"></svg>
+              <img className="foreground" src={enclosure.img} alt={title}></img>
+            </div>
+          </Artwork>
+          <Controls>
+            <Metadata>
+              <h3>{title}</h3>
+              <h4>{podcastTitle}</h4>
+            </Metadata>
+            <Buttons>
+              <ProgressWrapper>
+                <small className="time-passed">
+                  {seek && durationFormatter(seek)}
+                </small>
+                <ProgressContainer>
+                  <RangeSlider
+                    aria-label={['min', 'max']}
+                    step={0.1}
+                    min={0}
+                    max={duration ? duration.toFixed() : 0}
+                    onChange={handleSeekingChange}
+                    value={[seek]}
+                    onChangeStart={() => {
+                      setIsSeeking(true)
+                    }}
+                    onChangeEnd={() => {
+                      setIsSeeking(false)
+                    }}>
+                    <RangeSliderTrack>
+                      <RangeSliderFilledTrack id="rangeSlider"></RangeSliderFilledTrack>
+                    </RangeSliderTrack>
+                  </RangeSlider>
+                </ProgressContainer>
+                <small className="time-left">
+                  {duration && durationFormatter(duration)}
+                </small>
+              </ProgressWrapper>
+              <ReactHowler
+                src={[url]}
+                playing={playing}
+                onLoad={() => handleOnLoad()}
+                onPlay={() => handleOnPlay()}
+                onEnd={() => handleOnEnd()}
+                onStop={() => handleOnStop()}
+                onPause={() => handleOnPause()}
+                onPlayError={onPlayError}
+                onLoadError={onPlayError}
+                html5={true}
+                loop={false}
+                ref={playerRef}
+              />
+              <Button
+                aria-label="Play"
+                onClick={() => setPlaying(!playing)}
+                className={loaded ? null : 'loading'}>
+                {playing ? <>{loaded ? <Pause /> : <Loading />}</> : <Play />}
+              </Button>
+              {/* <Button aria-label="Backwards" onClick={() => setPlaying(false)}>
               <Backwards />
             </Button>
             <Button aria-label="Forwards" onClick={() => setPlaying(false)}>
               <Forwards />
             </Button> */}
-          </Buttons>
-        </Controls>
-      </Inner>
-    </Wrap>
+            </Buttons>
+          </Controls>
+        </Inner>
+      </Wrap>
+    </div>
   )
 }
 
