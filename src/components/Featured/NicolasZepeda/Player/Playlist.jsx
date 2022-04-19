@@ -19,10 +19,9 @@ const StPlaylist = styled.div`
   .chapters {
     /* background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: saturate(200%) blur(10px); */
+    height: 100%;
     border-radius: 6px 6px 0 0;
     background-color: #343333;
-    position: relative;
-    z-index: 3;
   }
 
   .playlist-header {
@@ -66,7 +65,7 @@ const StPlaylist = styled.div`
     .chapters {
       overflow-x: hidden;
       overflow-y: auto;
-      height: 60vh;
+      height: calc(100vh - 260px);
     }
     .playlist-header__button {
       background-color: tomato;
