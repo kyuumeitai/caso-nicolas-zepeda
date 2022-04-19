@@ -9,7 +9,7 @@ const IndexPage = () => {
   const { title, description, chapters } = content
   return (
     <Layout>
-      <SEO title={`${title} - Interactivo La Tercera`} />
+      <SEO />
       <Intro title={title} description={description} />
       <Recuadro chapters={chapters} />
     </Layout>

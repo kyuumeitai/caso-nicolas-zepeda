@@ -20,7 +20,6 @@ const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   color: black;
-  transform: translate3d(0, 0, 0);
 `
 
 const Content = styled(motion.div)`

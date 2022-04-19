@@ -56,7 +56,7 @@ function SEO({
       titleTemplate={
         title
           ? `%s - ${site.siteMetadata.title} - ${site.siteMetadata.siteName}`
-          : `${site.siteMetadata.title}  - ${site.siteMetadata.siteName}`
+          : `${site.siteMetadata.title} - ${site.siteMetadata.siteName}`
       }>
       <html lang={lang} />
       <title>{title ? title : ''} </title>
