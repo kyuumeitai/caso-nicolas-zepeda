@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { usePlayer } from '@/contexts/Player'
 import styled from 'styled-components'
 import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
@@ -10,7 +10,7 @@ import {
 
 const StPlaylist = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 10;
   &.playlist-active {
   }
   &.playlist-hidden {
@@ -158,16 +158,24 @@ const Playlist = () => {
 
   useEffect(() => {
     if (showPlaylist) {
-      disablePageScroll()
+      disablePageScroll(ref.current)
     } else {
-      enablePageScroll()
+      enablePageScroll(ref.current)
     }
   }, [showPlaylist])
+
+  useEffect(() => {
+    const current = ref.current
+    return () => {
+      enablePageScroll(current)
+    }
+  }, [])
 
   if (!episodes || !episodes.length) return null
 
   return (
     <StPlaylist
+      ref={ref}
       className={showPlaylist ? ' playlist-active' : 'playlist-hidden'}>
       <div className="chapters">
         {episodes.map((episode, index) => (
