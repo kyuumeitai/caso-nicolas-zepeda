@@ -1,4 +1,6 @@
-@tailwind base;
+@config "../../tailwind.config.js";
+@import "tailwindcss";
+
 html {
   @apply bg-gray-200;
   @apply text-black;
@@ -34,6 +36,3 @@ svg {
 p {
   @apply pb-4;
 }
-
-@tailwind components;
-@tailwind utilities;

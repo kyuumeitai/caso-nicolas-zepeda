@@ -15,9 +15,7 @@ module.exports = {
   },
   pathPrefix: `/habitacion-106-juicio-a-nicolas-zepeda`,
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-tailwindcss`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-image`,
     {
@@ -25,15 +23,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-purgecss`,
-      options: {
-        tailwind: true,
-        printRejected: true,
-        purgeOnly: [`src/styles/globals.css`],
-        // develop: true,
       },
     },
     {

@@ -1,17 +1,12 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { easing } from '@/utilities/math'
 import {
-  useViewportScroll,
+  useScroll,
   motion,
   useTransform,
-  AnimatePresence,
   useMotionValue,
-  animate,
 } from 'framer-motion'
-
-import { useGetResizer } from '@/contexts/Resizer'
-import { useTheme } from '@/contexts/Theming'
 
 import IntroSvg from './Intro'
 
@@ -78,7 +73,6 @@ const ContentWrapper = styled.div`
     min-width: 90%;
     margin-left: auto;
     margin-right: auto;
-    padding: 0 1rem;
     margin-top: 150px;
   }
   svg {
@@ -132,12 +126,8 @@ const BajadaWrapper = styled(motion.div)`
 `
 
 const Intro = ({ title, description }) => {
-  const area = useGetResizer()
-  const containerRef = useRef()
-  const zepedaRef = useRef()
-  const [refPosition, setRefPosition] = useState(0)
   const [windowHeight, setWindowHeight] = useState(768)
-  const { scrollY } = useViewportScroll()
+  const { scrollY } = useScroll()
 
   const contentScrollY = useTransform(
     scrollY,
@@ -210,14 +200,18 @@ const Intro = ({ title, description }) => {
     { ease: easing.outQuad },
   )
 
-  const setSizes = () => {
-    const position = containerRef.current?.getBoundingClientRect()
-    setRefPosition(position)
-  }
-
   useEffect(() => {
-    setSizes()
-  }, [area])
+    const updateWindowHeight = () => {
+      setWindowHeight(window.innerHeight)
+    }
+
+    updateWindowHeight()
+    window.addEventListener('resize', updateWindowHeight)
+
+    return () => {
+      window.removeEventListener('resize', updateWindowHeight)
+    }
+  }, [])
 
   const height = 4 // paños
 
@@ -227,58 +221,46 @@ const Intro = ({ title, description }) => {
 
   return (
     <div className="relative z-0">
-      <AnimatePresence>
-        <RadialGradient
-          key="radial-gradient"
-          // initial={{ opacity: 0 }}
-          // animate={{ opacity: 1 }}
-          // transition={{ duration: 1.7 }}
-          // exit={{ opacity: 0 }}
-          style={{
-            scale: gradientProgressScale,
-            y: gradientProgressY,
-          }}
-        />
-        <Container
-          key="container"
-          ref={containerRef}
-          style={{ height: `${height * 100}vh` }}>
-          <Screen>
-            <Content
-              style={{
-                y: contentProgressY,
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.4, ease: false }}>
-              <ContentWrapper>
-                <LogoWrapper>
-                  <h1>
-                    <LogoHabitacion106 alt={title} />
-                  </h1>
-                </LogoWrapper>
-                <BajadaWrapper
-                  dangerouslySetInnerHTML={{
-                    __html: replaceLineWithBr(description),
-                  }}
-                />
-              </ContentWrapper>
-            </Content>
-          </Screen>
-        </Container>
-        <VectorWrap key="vector-wrap">
-          <ZepedaSvg
-            ref={zepedaRef}
-            exit={{ opacity: 0 }}
+      <RadialGradient
+        style={{
+          scale: gradientProgressScale,
+          y: gradientProgressY,
+        }}
+      />
+      <Container style={{ height: `${height * 100}vh` }}>
+        <Screen>
+          <Content
             style={{
-              opacity: fallingZepedaOpacity,
-              y: fallingZepedaProgressY,
-              scale: shrinkZepedaOnScrollY,
-            }}>
-            <IntroSvg />
-          </ZepedaSvg>
-        </VectorWrap>
-      </AnimatePresence>
+              y: contentProgressY,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.4, ease: false }}>
+            <ContentWrapper>
+              <LogoWrapper>
+                <h1>
+                  <LogoHabitacion106 alt={title} />
+                </h1>
+              </LogoWrapper>
+              <BajadaWrapper
+                dangerouslySetInnerHTML={{
+                  __html: replaceLineWithBr(description),
+                }}
+              />
+            </ContentWrapper>
+          </Content>
+        </Screen>
+      </Container>
+      <VectorWrap>
+        <ZepedaSvg
+          style={{
+            opacity: fallingZepedaOpacity,
+            y: fallingZepedaProgressY,
+            scale: shrinkZepedaOnScrollY,
+          }}>
+          <IntroSvg />
+        </ZepedaSvg>
+      </VectorWrap>
     </div>
   )
 }

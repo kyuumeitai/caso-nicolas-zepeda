@@ -1,13 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 
-import { Link } from 'gatsby'
 import { LaTercera } from '@labcon/copesa-logos'
 import ReadProgress from './ReadProgress'
 import styled from 'styled-components'
 
 import { useGetResizer } from '@/contexts/Resizer'
 import { useNavSize } from '@/contexts/NavSize'
-import { useGetTheme } from '@/contexts/Theming'
 
 import Share from '@/components/Share'
 
@@ -33,33 +31,11 @@ const Header = ({ siteTitle }) => {
   const ref = useRef()
   const area = useGetResizer()
   const { setHeight } = useNavSize()
-  const theme = useGetTheme()
-  const scrollPos = useRef(0)
-
-  const [windowHeight, setWindowHeight] = useState(768)
 
   useEffect(() => {
     let rect = ref.current.getBoundingClientRect()
     setHeight(rect.height)
   }, [area, setHeight])
-
-  useEffect(() => {
-    const handleResize = () => {
-      updateWindowHeight()
-    }
-
-    const updateWindowHeight = () => {
-      setWindowHeight(window.innerHeight)
-    }
-
-    updateWindowHeight()
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   return (
     <StyledHeader

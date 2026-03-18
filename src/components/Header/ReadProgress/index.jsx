@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { motion, useTransform, useViewportScroll } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useGetResizer } from '@/contexts/Resizer'
-import { useGetTheme } from '@/contexts/Theming'
 
 import styled from 'styled-components'
 
@@ -20,22 +19,19 @@ const Bar = styled(motion.div)`
 `
 
 const ReadProgress = () => {
-  const viewportScroll = useViewportScroll()
+  const { scrollY } = useScroll()
   const [progress, setProgress] = useState(100000)
   const area = useGetResizer()
-  const theme = useGetTheme()
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = window.setTimeout(() => {
       setProgress(document.body.scrollHeight - window.innerHeight)
     }, 1000)
+
+    return () => window.clearTimeout(timer)
   }, [area])
 
-  const position = useTransform(
-    viewportScroll.scrollY,
-    [0, progress],
-    ['-100%', '0%'],
-  )
+  const position = useTransform(scrollY, [0, progress], ['-100%', '0%'])
 
   return (
     <ProgressContainer>

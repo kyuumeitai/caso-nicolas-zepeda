@@ -7,15 +7,14 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
 import defaultShareImg from '@/images/share.jpg'
 
 function SEO({
-  description,
-  lang,
-  meta,
+  description = ``,
+  lang = `es`,
+  meta = [],
   title,
   img,
   slug,
@@ -50,16 +49,14 @@ function SEO({
   const fullurl = `${site.siteMetadata.url}${postslug}${
     postslug.endsWith('/') ? '' : '/'
   }`
+  const pageTitle = title
+    ? `${title} - ${site.siteMetadata.title} - ${site.siteMetadata.siteName}`
+    : `${site.siteMetadata.title} - ${site.siteMetadata.siteName}`
 
   return (
-    <Helmet
-      titleTemplate={
-        title
-          ? `%s - ${site.siteMetadata.title} - ${site.siteMetadata.siteName}`
-          : `${site.siteMetadata.title} - ${site.siteMetadata.siteName}`
-      }>
+    <>
       <html lang={lang} />
-      <title>{title ? title : ''} </title>
+      <title>{pageTitle}</title>
       <meta name="description" content={metaDescription} />
       <link rel="canonical" href={fullurl} />
       <meta
@@ -110,14 +107,8 @@ function SEO({
           {JSON.stringify(structuredData)}
         </script>
       )}
-    </Helmet>
+    </>
   )
-}
-
-SEO.defaultProps = {
-  lang: `es`,
-  meta: [],
-  description: ``,
 }
 
 SEO.propTypes = {

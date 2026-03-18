@@ -4,7 +4,6 @@ import PlayerButton from '@/components/Featured/NicolasZepeda/Player/PlayerButto
 import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
 
 import { remark } from 'remark'
-import recommended from 'remark-preset-lint-recommended'
 import remarkHtml from 'remark-html'
 import Images from './Images'
 
@@ -62,6 +61,7 @@ const Section = ({
   audio,
   audiointro,
   chapindex,
+  imageOverride,
 }) => {
   const [parsedHtml, setParsedHtml] = useState(null)
 
@@ -75,18 +75,24 @@ const Section = ({
   }
 
   useEffect(() => {
+    let cancelled = false
+
     if (script) {
       remark()
-        .use(recommended)
         .use(remarkHtml)
-        .process(script, (err, file) => {
-          if (err) {
-            console.log('err en remark', err)
-          } else {
-            const transhtml = file.value
-            setParsedHtml(transhtml)
+        .process(script)
+        .then(file => {
+          if (!cancelled) {
+            setParsedHtml(String(file))
           }
         })
+        .catch(error => {
+          console.error('Error parsing chapter transcript', error)
+        })
+    }
+
+    return () => {
+      cancelled = true
     }
   }, [script])
 
@@ -103,17 +109,19 @@ const Section = ({
           <div
             className="mb-4"
             dangerouslySetInnerHTML={{ __html: description }}></div>
-          <div>
-            <PlayerButton
-              which={chapindex}
-              episode={mockEpisode}
-              transcription={parsedHtml}
-            />
-          </div>
+          {audio && (
+            <div>
+              <PlayerButton
+                which={chapindex}
+                episode={mockEpisode}
+                transcription={parsedHtml}
+              />
+            </div>
+          )}
         </div>
       </Wrap>
       <ImageWrap>
-        <Images which={chapindex + 1} />
+        <Images which={imageOverride || chapindex + 1} />
       </ImageWrap>
     </UberWrap>
   )

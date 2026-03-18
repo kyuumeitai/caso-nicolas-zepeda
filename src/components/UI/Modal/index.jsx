@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { useModal } from '@/contexts/Modal'
 import {
@@ -17,21 +17,23 @@ const ModalContainer = styled(motion.div)`
   z-index: 100;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
 
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: saturate(200%) blur(5px);
+  background-color: rgba(0, 0, 0, 0.6);
 `
 
 const Modal = styled(motion.div)`
+  position: relative;
   background-color: white;
   box-shadow: -0.5em 0 0.5em 0 rgba(0, 0, 0, 0.2);
   max-width: 1020px;
-  min-height: 90vh;
+  height: 90vh;
   margin-top: 5vh;
   margin-bottom: 5vh;
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.5em;
+  will-change: transform, opacity;
   @media (max-width: 1020px) {
     max-width: 96%;
   }
@@ -82,10 +84,6 @@ const Close = styled(motion.button)`
   }
 `
 
-const Meta = styled.div`
-  text-transform: uppercase;
-`
-
 const BodyContent = styled.div`
   overflow-y: auto;
   overflow-x: hidden;
@@ -110,64 +108,83 @@ const TitleContainer = styled.div`
   overflow: auto;
 `
 
-let modalAnimation = {
+const overlayAnimation = {
+  initial: { opacity: 0 },
+  enter: {
+    opacity: 1,
+    transition: { duration: 0.3, ease: 'easeOut' },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: 0.2, ease: 'easeIn', delay: 0.1 },
+  },
+}
+
+const modalAnimation = {
+  initial: { x: '100%', opacity: 0 },
   enter: {
     x: '0%',
+    opacity: 1,
     transition: {
-      type: 'tween',
-      ease: [0.5, 1, 0.89, 1],
-      duration: 0.5,
-      when: 'beforeChildren',
+      type: 'spring',
+      damping: 30,
+      stiffness: 300,
+      mass: 0.8,
     },
   },
   exit: {
-    x: '100%',
+    x: '60%',
+    opacity: 0,
     transition: {
       type: 'tween',
-      ease: [0.5, 1, 0.89, 1],
-      duration: 0.5,
-      when: 'afterChildren',
+      ease: [0.4, 0, 1, 1],
+      duration: 0.25,
     },
   },
 }
 
 const ModalComponent = () => {
   const { active, setActive, content, title } = useModal()
-  const ref = useRef()
+  const scrollRef = useRef()
 
   useEffect(() => {
     if (active) {
-      disablePageScroll(ref.current)
+      disablePageScroll(scrollRef.current)
     } else {
-      enablePageScroll(ref.current)
+      enablePageScroll(scrollRef.current)
     }
   }, [active])
 
   useEffect(() => {
-    const current = ref.current
+    const current = scrollRef.current
     return () => {
       enablePageScroll(current)
     }
   }, [])
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {active ? (
         <ModalContainer
-          initial="exit"
+          variants={overlayAnimation}
+          initial="initial"
           animate="enter"
           exit="exit"
           onClick={e => {
-            if (e.target === ref.current) {
+            if (e.target === e.currentTarget) {
               setActive(false)
             }
           }}>
-          <Modal variants={modalAnimation}>
+          <Modal
+            variants={modalAnimation}
+            initial="initial"
+            animate="enter"
+            exit="exit">
             <Close onClick={() => setActive(false)} />
             <TitleContainer
               dangerouslySetInnerHTML={{ __html: title }}></TitleContainer>
             <ContentContainer>
-              <BodyContent ref={ref}>
+              <BodyContent ref={scrollRef}>
                 <div dangerouslySetInnerHTML={{ __html: content }}></div>
               </BodyContent>
             </ContentContainer>

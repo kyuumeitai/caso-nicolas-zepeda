@@ -1,16 +1,13 @@
 import React from 'react'
-import styled from 'styled-components'
 import {
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-  RedditShareButton,
 } from 'react-share'
 
 import twittericon from '@/images/icon-twitter.svg'
 import facebookicon from '@/images/icon-facebook.svg'
 import whatsappicon from '@/images/icon-whatsapp.svg'
-import redditicon from '@/images/icon-reddit.svg'
 
 const Share = ({ url, title, twitterhandle, hashtags }) => {
   if (!url || !title) {

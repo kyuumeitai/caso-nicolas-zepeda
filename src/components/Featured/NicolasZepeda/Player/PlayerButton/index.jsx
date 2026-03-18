@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Play, Pause } from '../Buttons'
 import { usePlayer } from '@/contexts/Player'
@@ -37,7 +37,6 @@ const TranscriptionButton = styled.button`
 const PlayerButton = ({ episode, transcription, which }) => {
   const {
     setEpisode,
-    isPlaying,
     setIsPlaying,
     activeEpisode,
     setActiveEpisode,
@@ -72,6 +71,7 @@ const PlayerButton = ({ episode, transcription, which }) => {
   return (
     <Wrap>
       <PlayButton
+        type="button"
         onClick={() => {
           if (which === activeEpisode && !globalPause) {
             handlePause()
@@ -82,7 +82,7 @@ const PlayerButton = ({ episode, transcription, which }) => {
         {which === activeEpisode && !globalPause ? <Pause /> : <Play />}
       </PlayButton>
       <div>
-        <ListenButton onClick={() => handlePlay()}>
+        <ListenButton type="button" onClick={() => handlePlay()}>
           {which !== activeEpisode && (
             <span className="font-bold hover:underline">Escuchar</span>
           )}
@@ -91,6 +91,7 @@ const PlayerButton = ({ episode, transcription, which }) => {
         <span className="text-xs text-gray-600"> |</span>{' '}
         {transcription && (
           <TranscriptionButton
+            type="button"
             className="text-xs text-gray-800 hover:underline"
             onClick={() => handleTranscriptionClick()}>
             Transcripción

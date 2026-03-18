@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
             <PlayerProvider>
               <Header siteTitle={data.site.siteMetadata.title} />
               <ModalProvider>
-                <AnimatePresence exitBeforeEnter initial={false}>
+                <AnimatePresence mode="wait" initial={false}>
                   <main key="main">{children}</main>
                 </AnimatePresence>
                 <Modal />

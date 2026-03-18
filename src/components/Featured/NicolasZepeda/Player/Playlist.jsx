@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { usePlayer } from '@/contexts/Player'
 import styled from 'styled-components'
 import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
@@ -151,7 +151,7 @@ const StEpisode = styled.button`
 `
 
 const Playlist = () => {
-  const { episodes, showPlaylist, setShowPlaylist, activeEpisode } = usePlayer()
+  const { episodes, showPlaylist, setShowPlaylist } = usePlayer()
   const ref = useRef()
 
   useEffect(() => {
@@ -175,6 +175,10 @@ const Playlist = () => {
     <>
       <StPlaylistButton>
         <button
+          type="button"
+          aria-label={showPlaylist ? 'Ocultar capítulos' : 'Mostrar capítulos'}
+          aria-controls="player-playlist-chapters"
+          aria-expanded={showPlaylist}
           className="playlist-header__button"
           onClick={() => setShowPlaylist(!showPlaylist)}>
           <div className="playlist-header__button__inner">
@@ -207,8 +211,8 @@ const Playlist = () => {
       </StPlaylistButton>
       <StPlaylist
         ref={ref}
-        className={showPlaylist ? ' playlist-active' : 'playlist-hidden'}>
-        <div className="chapters">
+        className={showPlaylist ? 'playlist-active' : 'playlist-hidden'}>
+        <div className="chapters" id="player-playlist-chapters">
           {episodes.map((episode, index) => (
             <Episode key={index} index={index} episode={episode} />
           ))}
@@ -219,7 +223,7 @@ const Playlist = () => {
 }
 
 const Episode = ({ episode, index }) => {
-  const { audio, length, prefix, title, description } = episode
+  const { audio, length, prefix, title } = episode
   const { setEpisode, setShowPlaylist, activeEpisode, setActiveEpisode } =
     usePlayer()
 
@@ -239,6 +243,7 @@ const Episode = ({ episode, index }) => {
   }
   return (
     <StEpisode
+      type="button"
       onClick={() => handleClick()}
       role="listitem"
       title={`${prefix} | ${title}`}

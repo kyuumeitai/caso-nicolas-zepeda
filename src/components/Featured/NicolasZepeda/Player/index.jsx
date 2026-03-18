@@ -3,23 +3,10 @@ import { usePlayer } from '@/contexts/Player'
 import ReactHowler from 'react-howler'
 import styled, { keyframes } from 'styled-components'
 import durationFormatter from '@/utilities/formatter'
-import { Play, Pause, Backwards, Forwards, Loading } from './Buttons'
+import { Play, Pause, Loading } from './Buttons'
 import cover from '@/images/habitacion-106-podcast-lt-small.jpg'
 
 import Playlist from './Playlist'
-
-import {
-  ButtonGroup,
-  Box,
-  IconButton,
-  RangeSlider,
-  RangeSliderFilledTrack,
-  RangeSliderTrack,
-  RangeSliderThumb,
-  Center,
-  Flex,
-  Text,
-} from '@chakra-ui/react'
 
 const spinner = keyframes`
   0% {
@@ -63,19 +50,61 @@ const Inner = styled.div`
 
 const ProgressContainer = styled.div`
   width: 100%;
-  height: 10px;
+  height: 20px;
   margin: 10px 0;
-  overflow: hidden;
-  .chakra-slider {
-    height: 6px;
-    background-color: #444;
+  display: flex;
+  align-items: center;
+`
+
+const ProgressInput = styled.input`
+  width: 100%;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 20px;
+
+  &::-webkit-slider-runnable-track {
+    height: 8px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      tomato 0%,
+      tomato var(--track-progress),
+      rgba(255, 255, 255, 0.2) var(--track-progress),
+      rgba(255, 255, 255, 0.2) 100%
+    );
   }
-  .chakra-slider__track {
-    height: 6px;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    margin-top: -4px;
+    border: 2px solid white;
+    border-radius: 999px;
+    background-color: tomato;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   }
-  .chakra-slider__filled-track {
-    height: 6px;
-    background-color: #ccc;
+
+  &::-moz-range-track {
+    height: 8px;
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &::-moz-range-progress {
+    height: 8px;
+    border-radius: 999px;
+    background-color: tomato;
+  }
+
+  &::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border: 2px solid white;
+    border-radius: 999px;
+    background-color: tomato;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
   }
 `
 
@@ -170,7 +199,6 @@ const Player = () => {
   const [seek, setSeek] = useState(0.0)
   const [playing, setPlaying] = useState(false)
   const [isSeeking, setIsSeeking] = useState(false)
-  const [paused, setPaused] = useState(false)
 
   const playerRef = useRef()
 
@@ -189,10 +217,19 @@ const Player = () => {
   const { title, podcastTitle, enclosure } = episode
 
   useEffect(() => {
-    episode.enclosure && setUrl(episode.enclosure.url)
+    if (!episode.enclosure) return
+    const newUrl = episode.enclosure.url
+
+    if (newUrl !== url) {
+      setLoaded(false)
+      setSeek(0)
+      setDuration(0)
+    }
+    setUrl(newUrl)
+    setGlobalPause(false)
     setPlaying(true)
     setPlayerInBottom(true)
-  }, [episode])
+  }, [episode]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const nextChapter = () => {
     if (activeEpisode + 1 < episodes.length) {
@@ -207,14 +244,15 @@ const Player = () => {
           length: length,
         },
       }
-      setEpisode(mockEpisode)
       setActiveEpisode(activeEpisode + 1)
+      setEpisode(mockEpisode)
     } else {
       setPlaying(false)
     }
   }
 
   const handleOnLoad = () => {
+
     const soundDuration = playerRef.current?.duration()
     if (soundDuration) {
       setDuration(soundDuration)
@@ -222,21 +260,24 @@ const Player = () => {
     setLoaded(true)
   }
 
-  const handleOnPlay = bla => {
-    // console.log('on play', bla)
+  const handleOnPlay = () => {
+
     setPlaying(true)
     setIsPlaying(true)
     setGlobalPause(false)
   }
 
   const handleOnStop = () => {
-    // console.log('click stop')
-    setPaused(true)
+    // Intentionally empty — stop fires during ReactHowler teardown
+    // when switching tracks, which would kill the playing state we
+    // just set for the next track. User pauses go through handleOnPause.
+
   }
 
   const handleOnPause = () => {
-    // console.log('click pause')
-    setPaused(true)
+
+    setPlaying(false)
+    setIsPlaying(false)
     setGlobalPause(true)
   }
 
@@ -247,12 +288,14 @@ const Player = () => {
   }
 
   const handleOnEnd = () => {
+
     nextChapter()
   }
 
-  const handleSeekingChange = e => {
-    setSeek(parseFloat(`${e[0]}`))
-    playerRef.current?.seek(parseFloat(`${e[0]}`))
+  const handleSeekingChange = event => {
+    const nextSeek = Number.parseFloat(event.target.value) || 0
+    setSeek(nextSeek)
+    playerRef.current?.seek(nextSeek)
   }
 
   useEffect(() => {
@@ -270,10 +313,10 @@ const Player = () => {
 
   useEffect(() => {
     if (globalPause && playing) {
+
       setPlaying(false)
-      setPaused(true)
     }
-  }, [globalPause])
+  }, [globalPause, playing])
 
   if (!url) return null
   if (!playerInBottom) return null
@@ -300,23 +343,38 @@ const Player = () => {
                   {seek && durationFormatter(seek)}
                 </small>
                 <ProgressContainer>
-                  <RangeSlider
-                    aria-label={['min', 'max']}
+                  <ProgressInput
+                    aria-label="Seek playback position"
+                    type="range"
                     step={0.1}
                     min={0}
-                    max={duration ? duration.toFixed() : 0}
+                    max={duration || 0}
                     onChange={handleSeekingChange}
-                    value={[seek]}
-                    onChangeStart={() => {
+                    onPointerDown={() => {
                       setIsSeeking(true)
                     }}
-                    onChangeEnd={() => {
+                    onPointerUp={() => {
                       setIsSeeking(false)
-                    }}>
-                    <RangeSliderTrack>
-                      <RangeSliderFilledTrack id="rangeSlider"></RangeSliderFilledTrack>
-                    </RangeSliderTrack>
-                  </RangeSlider>
+                    }}
+                    onPointerCancel={() => {
+                      setIsSeeking(false)
+                    }}
+                    onKeyDown={() => {
+                      setIsSeeking(true)
+                    }}
+                    onKeyUp={() => {
+                      setIsSeeking(false)
+                    }}
+                    onBlur={() => {
+                      setIsSeeking(false)
+                    }}
+                    style={{
+                      '--track-progress': `${
+                        duration > 0 ? (seek / duration) * 100 : 0
+                      }%`,
+                    }}
+                    value={Number.isFinite(seek) ? seek : 0}
+                  />
                 </ProgressContainer>
                 <small className="time-left">
                   {duration && durationFormatter(duration)}
@@ -337,6 +395,7 @@ const Player = () => {
                 ref={playerRef}
               />
               <Button
+                type="button"
                 aria-label="Play"
                 onClick={() => setPlaying(!playing)}
                 className={loaded ? null : 'loading'}>

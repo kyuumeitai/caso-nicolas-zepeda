@@ -16,6 +16,17 @@ const data = {
   chapters: [
     {
       audio: `https://interactivo.latercera.com/zepeda-assets/v2/CAP%201%20FX.mp3`,
+      audiointro: null,
+      length: '4:52',
+      prefix: `Actualización 2026`,
+      title: 'Tercer juicio en Lyon',
+      description: `A casi una década de la desaparición de Narumi Kurosaki, el caso que remeció a Chile y Francia vuelve a un punto decisivo con el inicio en Lyon del tercer juicio contra Nicolás Zepeda, quien insiste en su inocencia tras la anulación de su condena en 2025. En este contexto, te invitamos a revisitar Habitación 106: el juicio de Nicolás Zepeda, la audiohistoria y especial multimedia que La Tercera realizó en 2022, con las claves de una investigación marcada por giros judiciales y una incógnita que persiste hasta hoy.`,
+      coordinates: null,
+      script: null,
+      imageOverride: 1,
+    },
+    {
+      audio: `https://interactivo.latercera.com/zepeda-assets/v2/CAP%201%20FX.mp3`,
       audiointro: `https://interactivo.latercera.com/zepeda-assets/INTRO%20CAP%201.mp3`,
       length: '4:52',
       prefix: `Episodio 1`,
