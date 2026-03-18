@@ -7,48 +7,48 @@ const Credits = () => (
     <div className="creditsWrapper">
       <h2 className=" font-actaDisplay">Créditos</h2>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         Habitación 106 es un trabajo conjunto de la{' '}
         <strong>Unidad de Investigación y Datos</strong> y el área de{' '}
         <strong>Narrativas Interactivas de La Tercera</strong>
       </p>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         La idea original es de{' '}
         <strong className="block">
           Alejandro Trujillo<span className="font-normal ">.</span>
         </strong>
       </p>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         La coordinación y edición de textos es de{' '}
         <strong className="block">
           Tania Opazo<span className="font-normal ">.</span>
         </strong>
       </p>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         La investigación y el guión es trabajo de{' '}
         <strong className="block">
           Francisco Siredey<span className="font-normal ">.</span>
         </strong>
       </p>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         La narración, edición y postproducción de audio es de{' '}
         <strong className="block">
           Francisco Aravena<span className="font-normal ">.</span>
         </strong>
       </p>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         Las ilustraciones son de{' '}
         <strong className="block">
           César Mejías<span className="font-normal ">.</span>
         </strong>
       </p>
 
-      <p className="font-sans leading-tight">
+      <p className="font-sans leading-tight text-pretty">
         El diseño y desarrollo es de{' '}
         <strong className="block">
           Álex Acuña Viera<span className="font-normal ">.</span>
@@ -57,108 +57,78 @@ const Credits = () => (
 
       <h2 className="mt-4 text-2xl font-bold font-actaBook ">Voces</h2>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Narrador:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Francisco Aravena</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Nicolás Zepeda</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Iván Parra</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Narumi Kurosaki</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Sofía Gómez</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Humberto Zepeda:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Christian Rendic</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Taeko Akiyama:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">María José Soto</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Arthur Del Piccolo:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Enrique Yavar</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Fiscal Etienne Manteaux:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Francisco Artaza</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Juan Felipe Ramírez:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Sebastián Labrín</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Investigador David Borne:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Sebastián Rivas</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Abogada Jacqueline Laffont:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Andrea Hartung</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Abogado Randall Schwerdorffer:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Alejandro Trujillo</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Rachel Roberts:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">María del Carmen Rodríguez</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Nadia Ouaked:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Valentina Danker</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Rina Sakamaki:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Josefina Stavrakopulos</strong>
       </p>
 
-      <p className="p-0 m-0 -mb-2">
+      <p className="mb-4 leading-tight">
         <span>Jorge Dahm:</span>
-      </p>
-      <p className="p-0 m-0 mb-4 ">
         <strong className="block">Nicolás Vergara</strong>
       </p>
     </div>

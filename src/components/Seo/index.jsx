@@ -102,6 +102,13 @@ function SEO({
         <meta property="profile:username" content={user.nombre} />
       )}
 
+      {structuredData?.datePublished && (
+        <meta property="article:published_time" content={structuredData.datePublished} />
+      )}
+      {structuredData?.dateModified && (
+        <meta property="article:modified_time" content={structuredData.dateModified} />
+      )}
+
       {structuredData && (
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

@@ -54,6 +54,25 @@ const Recuadro = ({ chapters }) => {
             </SectionWrap>
           )
         })}
+        <div className="max-w-2xl px-4 py-20 mx-auto text-center">
+          <h2 className="mb-4 font-actaDisplay text-balance">Disclaimer</h2>
+          <p className="font-sans leading-relaxed text-pretty text-gray-700">
+            Este especial multimedia fue publicado originalmente en abril de
+            2022, durante el primer juicio a Nicolás Zepeda en Besanzón,
+            Francia. Desde entonces, el caso ha tenido nuevos desarrollos: en
+            2023 se ratificó la condena en apelación y en 2025 la Corte de
+            Casación Francesa anuló dicha sentencia por irregularidades
+            procesales. Actualmente, en marzo de 2026, se lleva a cabo un tercer
+            juicio en Lyon cuyo veredicto se espera para fines de mes. Los
+            contenidos de los episodios originales reflejan la información
+            disponible al momento de su producción y no han sido modificados. La
+            introducción ha sido actualizada para dar contexto sobre el estado
+            actual del proceso.
+          </p>
+          <p className="mt-4 font-sans text-xs text-gray-400">
+            Última actualización: 18 de marzo de 2026
+          </p>
+        </div>
       </Content>
     </Container>
   )

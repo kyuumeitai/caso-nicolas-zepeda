@@ -15,6 +15,20 @@ const IndexPage = () => {
   )
 }
 
-export const Head = () => <Seo />
+export const Head = () => (
+  <Seo
+    structuredData={{
+      '@context': 'https://schema.org',
+      '@type': 'NewsArticle',
+      headline: 'Habitación 106: El Juicio a Nicolás Zepeda',
+      datePublished: '2022-04-12T00:00:00-04:00',
+      dateModified: '2026-03-18T00:00:00-03:00',
+      publisher: {
+        '@type': 'Organization',
+        name: 'La Tercera',
+      },
+    }}
+  />
+)
 
 export default IndexPage

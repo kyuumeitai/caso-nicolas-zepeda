@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Habitación 106: El Juicio a Nicolás Zepeda`,
-    description: ``,
+    description: `Habitación 106: el juicio a Nicolás Zepeda. Audiohistoria y especial multimedia de La Tercera sobre el caso de la desaparición de Narumi Kurosaki. Actualizado con el tercer juicio en Lyon, 2026.`,
     author: `@latercera`,
     shareimg: `src/images/share.jpg`,
     fbappid: `1134891773353659`,
@@ -26,15 +26,9 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-facebook-pixel`,
-      options: {
-        pixelId: '736034173495383',
-      },
-    },
-    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [`UA-80728886-38`, `UA-27744179-98`, `UA-27744179-43`],
+        trackingIds: [`G-3PWBLKRS05`],
         pluginConfig: {
           head: false,
         },

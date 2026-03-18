@@ -51,6 +51,20 @@ const ImageWrap = styled.div`
   }
 `
 
+const NewPill = styled.span`
+  display: inline-block;
+  background-color: tomato;
+  color: white;
+  font-family: sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 999px;
+  margin-bottom: 6px;
+`
+
 const Section = ({
   title,
   description,
@@ -61,7 +75,9 @@ const Section = ({
   audio,
   audiointro,
   chapindex,
+  length,
   imageOverride,
+  isNew,
 }) => {
   const [parsedHtml, setParsedHtml] = useState(null)
 
@@ -100,7 +116,8 @@ const Section = ({
     <UberWrap>
       <Wrap>
         <div className="container px-2 mx-auto firstcol sm:px-4 lg:px-20">
-          <h2 className="mb-4 font-actaDisplay ">
+          <h2 className="mb-4 font-actaDisplay text-balance">
+            {isNew && <NewPill>Nuevo</NewPill>}
             <small className="block font-sans text-base font-bold tracking-wide ">
               {prefix}
             </small>
@@ -115,13 +132,14 @@ const Section = ({
                 which={chapindex}
                 episode={mockEpisode}
                 transcription={parsedHtml}
+                length={length}
               />
             </div>
           )}
         </div>
       </Wrap>
       <ImageWrap>
-        <Images which={imageOverride || chapindex + 1} />
+        <Images which={imageOverride || chapindex} />
       </ImageWrap>
     </UberWrap>
   )

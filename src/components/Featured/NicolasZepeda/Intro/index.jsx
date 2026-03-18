@@ -115,6 +115,7 @@ const ZepedaSvg = styled(motion.div)`
 const LogoWrapper = styled(motion.div)`
   max-width: 500px;
   margin: 0 auto;
+  padding: 1.5rem 1rem;
   svg {
     max-width: 100%;
   }
@@ -123,6 +124,7 @@ const LogoWrapper = styled(motion.div)`
 const BajadaWrapper = styled(motion.div)`
   max-width: 500px;
   margin: 0 auto;
+  padding: 1.5rem 1rem;
 `
 
 const Intro = ({ title, description }) => {
@@ -173,7 +175,7 @@ const Intro = ({ title, description }) => {
 
   const shrinkZepedaOnScrollY = useTransform(
     scrollY,
-    [0, windowHeight * 3],
+    [windowHeight * 0.5, windowHeight * 3],
     [1, 0.5],
     {
       ease: easing.outQuad,
@@ -195,7 +197,7 @@ const Intro = ({ title, description }) => {
 
   const fallingZepedaOpacity = useTransform(
     scrollY,
-    [0, windowHeight * 3, windowHeight * 4],
+    [windowHeight * 0.5, windowHeight * 3, windowHeight * 4],
     [0, 1, 1],
     { ease: easing.outQuad },
   )

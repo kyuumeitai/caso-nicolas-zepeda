@@ -28,9 +28,8 @@ const Images = ({ which }) => {
   `)
 
   const selectImage = which => {
-    const image = allFile.nodes.find(
-      node => node.name === `${addZeroPrefix(which)}`,
-    )
+    const key = typeof which === 'string' ? which : `${addZeroPrefix(which)}`
+    const image = allFile.nodes.find(node => node.name === key)
     return image
   }
 

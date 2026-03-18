@@ -2,28 +2,33 @@ const data = {
   title: `Habitación 106:
   El Juicio a Nicolás Zepeda
   `,
-  description: `Hace cinco años, la estudiante japonesa <strong>Narumi Kurosaki</strong> desapareció en Besanzón, Francia.
+  description: `A casi una década de la desaparición de la estudiante japonesa <strong>Narumi Kurosaki</strong>, el caso que conmocionó a Chile, Francia y Japón vuelve a un momento decisivo. Este 17 de marzo comenzó en Lyon el tercer juicio contra el chileno <strong>Nicolás Zepeda Contreras</strong>, quien insiste en su inocencia tras la anulación en 2025 de la condena a 28 años de cárcel dictada en su contra por fallos en el debido proceso. En este contexto, <strong>La Tercera</strong> republica la audiohistoria <strong>Habitación 106: el juicio de Nicolás Zepeda</strong>, un especial multimedia realizado en 2022 que reconstruye la investigación a partir de las declaraciones de sus protagonistas y una dramatización que permite entender qué se sabe (y qué no) de este caso.
 
-  Todos los indicios seguidos por las autoridades locales apuntaban a la responsabilidad de su expareja, <strong>Nicolás Zepeda Contreras</strong>. La investigación reveló un tormentoso romance, la posesiva personalidad del joven chileno y sus sospechosos movimientos por Europa.
-  
-  Este martes 12 de abril, un tribunal francés declaró a Zepeda en primera instancia como culpable del asesinato de Narumi, y fijó una condena de 28 años de cárcel por estimar que actuó con premeditación. 
-  
-  La Tercera reconstruyó la historia a partir de las declaraciones originales de sus protagonistas, las que se recrearon en una dramatización que busca explicar más claramente lo que se sabe y lo que no de este misterioso episodio.
-  
-  Así presentamos, en 10 capítulos, las claves de un caso criminal que conmocionó a tres países.
+  Todos los indicios seguidos por las autoridades apuntaron a la responsabilidad de su expareja. La indagatoria reveló un tormentoso romance, la personalidad posesiva del joven chileno y sus movimientos por Europa en los días previos a la desaparición. La fiscalía sostuvo su tesis en base a pruebas como registros de GPS, compras de combustible y los gritos escuchados en la residencia estudiantil, mientras la familia de <strong>Narumi</strong> ha esperado justicia por un cuerpo que nunca apareció.
+
+  Aquí presentamos, en 10 capítulos, las claves de una investigación marcada por giros judiciales, reconstrucciones parciales y una incógnita que persiste hasta hoy.
   `,
   audiointro: `https://interactivo.latercera.com/zepeda-assets/v2/INTRO%20GRAL%20CON%20MUSICA.mp3`,
   chapters: [
     {
-      audio: `https://interactivo.latercera.com/zepeda-assets/v2/CAP%201%20FX.mp3`,
+      audio: `https://interactivo.latercera.com/zepeda-assets/v3/intro2h106.mp3`,
       audiointro: null,
-      length: '4:52',
+      length: '1:23',
       prefix: `Actualización 2026`,
+      isNew: true,
       title: 'Tercer juicio en Lyon',
       description: `A casi una década de la desaparición de Narumi Kurosaki, el caso que remeció a Chile y Francia vuelve a un punto decisivo con el inicio en Lyon del tercer juicio contra Nicolás Zepeda, quien insiste en su inocencia tras la anulación de su condena en 2025. En este contexto, te invitamos a revisitar Habitación 106: el juicio de Nicolás Zepeda, la audiohistoria y especial multimedia que La Tercera realizó en 2022, con las claves de una investigación marcada por giros judiciales y una incógnita que persiste hasta hoy.`,
       coordinates: null,
-      script: null,
-      imageOverride: 1,
+      script: `Este 17 de marzo comenzó en Lyon el tercer juicio contra el chileno Nicolás Zepeda por el asesinato de Narumi Kurosaki en 2016. Ante el tribunal, Zepeda reiteró su inocencia, declaró "no la maté" al abrirse un proceso que busca cerrar una década de incertidumbre.
+
+Este nuevo juicio surge tras un vuelco judicial en 2025, cuando la Corte de Casación Francesa anuló la condena previa de 28 años por fallos en el debido proceso.
+
+En la cronología del caso, un hito importante está el año 2022. En ese entonces, un primer tribunal lo declaró culpable. Luego, en 2023, tras un recurso de apelación, se ratificó la pena. Sin embargo, la defensa detectó irregularidades procesales que forzaron esta repetición del juicio.
+
+Hoy la Fiscalía sostiene su tesis basada en datos de GPS, compras de combustible y los gritos en la residencia estudiantil. La familia de Narumi asiste al juicio esperando justicia por un cuerpo que nunca apareció. El veredicto de este capítulo final se espera para finales de marzo.
+
+El año 2022, un equipo de La Tercera realizó Habitación 106, el juicio a Nicolás Zepeda, un podcast y especial multimedia con las claves de todo este proceso que hoy te invitamos a revisitar.`,
+      imageOverride: 'zepeda2026',
     },
     {
       audio: `https://interactivo.latercera.com/zepeda-assets/v2/CAP%201%20FX.mp3`,

@@ -34,7 +34,14 @@ const TranscriptionButton = styled.button`
   cursor: pointer;
 `
 
-const PlayerButton = ({ episode, transcription, which }) => {
+const formatLength = (length) => {
+  if (!length) return '4 min'
+  const [min, sec] = length.split(':').map(Number)
+  const total = Math.round(min + sec / 60)
+  return `${total < 1 ? 1 : total} min`
+}
+
+const PlayerButton = ({ episode, transcription, which, length }) => {
   const {
     setEpisode,
     setIsPlaying,
@@ -86,7 +93,7 @@ const PlayerButton = ({ episode, transcription, which }) => {
           {which !== activeEpisode && (
             <span className="font-bold hover:underline">Escuchar</span>
           )}
-          <span className="text-xs text-gray-800 "> 4 min </span>{' '}
+          <span className="text-xs text-gray-800 "> {formatLength(length)} </span>{' '}
         </ListenButton>
         <span className="text-xs text-gray-600"> |</span>{' '}
         {transcription && (
